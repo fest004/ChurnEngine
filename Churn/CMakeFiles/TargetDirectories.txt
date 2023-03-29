@@ -1,0 +1,3 @@
+/home/ubuntu/Documents/CPP/ChurnEngine/Churn/CMakeFiles/GameEngine.dir
+/home/ubuntu/Documents/CPP/ChurnEngine/Churn/CMakeFiles/edit_cache.dir
+/home/ubuntu/Documents/CPP/ChurnEngine/Churn/CMakeFiles/rebuild_cache.dir
