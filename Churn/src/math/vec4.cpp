@@ -1,6 +1,6 @@
 #include "vec4.hpp"
 
-namespace sparky {
+namespace churn {
 namespace math {
 
 vec4::vec4() {
@@ -80,4 +80,4 @@ std::ostream &operator<<(std::ostream &stream, const vec4 &vector) {
 }
 
 } // namespace math
-} // namespace sparky
+} // namespace churn

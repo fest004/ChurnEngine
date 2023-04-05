@@ -1,14 +1,13 @@
-
 #pragma once
 
 #include <iostream>
 
-namespace sparky {
+namespace churn {
 namespace math {
 
-struct vec3 {
-  float x, y, z;
-
+class vec3 {
+public:
+  // Methods
   vec3();
   vec3(const float &x, const float &y, const float &z);
 
@@ -31,7 +30,11 @@ struct vec3 {
   vec3 &operator/=(const vec3 &other);
 
   friend std::ostream &operator<<(std::ostream &stream, const vec3 &vector);
+
+public:
+  // Variables
+  float x, y, z;
 };
 
 } // namespace math
-} // namespace sparky
+} // namespace churn

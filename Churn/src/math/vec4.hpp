@@ -2,10 +2,11 @@
 
 #include <iostream>
 
-namespace sparky {
+namespace churn {
 namespace math {
 
-struct vec4 {
+class vec4 {
+public:
   float x, y, z, w;
 
   vec4();
@@ -33,4 +34,4 @@ struct vec4 {
 };
 
 } // namespace math
-} // namespace sparky
+} // namespace churn

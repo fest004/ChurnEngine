@@ -1,11 +1,13 @@
-
 #include <glad/glad.h>
 
 #include <GLFW/glfw3.h>
 #include <iostream>
 
 #include "graphics/window.cpp"
+#include "graphics/window.hpp"
 #include "math/math.hpp"
+
+// #include "math/math.hpp"
 
 int main() {
   using namespace churn;
@@ -15,7 +17,9 @@ int main() {
   Window window("Churn", 800, 600);
   glClearColor(0.2f, 0.3f, 0.8f, 1.0f);
 
-  Vec2 vector(1.0f, 2.0f);
+  vec2 vector(1.0f, 2.0f);
+
+  mat4 position = mat4::translation(vec3(2.0f, 4.0f, 6.0f));
 
   // Game loop
   while (!window.closed()) {
