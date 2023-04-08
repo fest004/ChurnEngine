@@ -1,5 +1,5 @@
 #include "mat4.hpp"
-#include "math.hpp"
+#include "radians.hpp"
 
 namespace churn {
 namespace math {

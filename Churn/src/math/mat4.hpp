@@ -2,8 +2,8 @@
 
 #define _USE_MATH_DEFINES
 
-#include "math.hpp"
 #include "vec3.hpp"
+#include "vec4.hpp"
 #include <math.h>
 
 namespace churn {
@@ -11,7 +11,10 @@ namespace math {
 
 class mat4 {
 public:
-  float elements[4 * 4];
+  union {
+    float elements[4 * 4];
+    vec4 columns[4];
+  };
 
   mat4();
   mat4(float diagonal);

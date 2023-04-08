@@ -11,8 +11,5 @@
 #include <cmath>
 
 namespace churn {
-namespace math {
-
-inline float toRadians(float degrees) { return degrees * (M_PI / 180.0f); }
-} // namespace math
+namespace math {} // namespace math
 } // namespace churn
