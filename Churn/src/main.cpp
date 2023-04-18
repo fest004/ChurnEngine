@@ -1,8 +1,13 @@
+
+#include <glad/glad.h>
+
+#include <GLFW/glfw3.h>
+
+#include "graphics/shader.cpp"
+#include "graphics/shader.h"
 #include "graphics/window.cpp"
 #include "graphics/window.hpp"
 #include "math/math.hpp"
-#include <GLFW/glfw3.h>
-#include <glad/glad.h>
 #include <iostream>
 
 // #include "math/math.hpp"
@@ -15,29 +20,30 @@ int main() {
   Window window("Churn", 800, 600);
   glClearColor(0.2f, 0.3f, 0.8f, 1.0f);
 
-  vec2 vector(1.0f, 2.0f);
+  GLfloat vertices[] = {-0.5f, -0.5f, 0.0f,  -0.5f, 0.5f, 0.0f, 0.5f,
+                        0.5f,  0.0f,  0.5f,  0.5f,  0.0f, 0.5f, -0.5f,
+                        0.0f,  -0.5f, -0.5f, 0.0f
 
-  mat4 position = mat4::translation(vec3(2, 3, 4));
-  position *= mat4::identity();
+  };
 
-  position.elements[12] = 2.0f;
+  GLuint vbo;
+  glGenBuffers(1, &vbo);
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  glEnableVertexAttribArray(0);
 
-  vec4 column = position.columns[3];
-  std::cout << &column.x << std::endl;
+  Shader shader("../src/shaders/basic.vert", "../src/shaders/basic.frag");
+  shader.enable();
 
   // Game loop
   while (!window.closed()) {
 
-    // std::cout << vector << std::endl;
-
     window.clear();
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 
     // Everything between window.clear() and window.update() is testing features
-    glBegin(GL_TRIANGLES);
-    glVertex2f(-0.5f, -0.5f);
-    glVertex2f(0.0f, 0.5f);
-    glVertex2f(0.5f, -0.5f);
-    glEnd();
     window.update();
   }
 
