@@ -71,9 +71,38 @@ GLuint Shader::load() {
   return program;
 }
 
+GLint Shader::getUniformLocation(const GLchar *name) {
+  return glGetUniformLocation(m_ShaderID, name);
+}
+
 void Shader::enable() const { glUseProgram(m_ShaderID); }
 
 void Shader::disable() const { glUseProgram(0); }
 
+void Shader::setUniform1float(const GLchar *name, float value) {
+  //
+  glUniform1f(getUniformLocation(name), value);
+}
+void Shader::setUniform2float(const GLchar *name, const math::vec2 &vector2) {
+  //
+  glUniform2f(getUniformLocation(name), vector2.x, vector2.y);
+}
+void Shader::setUniform3float(const GLchar *name, const math::vec3 &vector3) {
+  //
+  glUniform3f(getUniformLocation(name), vector3.x, vector3.y, vector3.z);
+}
+void Shader::setUniform4float(const GLchar *name, const math::vec4 &vector4) {
+  //
+  glUniform4f(getUniformLocation(name), vector4.x, vector4.y, vector4.z,
+              vector4.w);
+}
+void Shader::setUniform1int(const GLchar *name, int value) {
+  //
+  glUniform1i(getUniformLocation(name), value);
+}
+void Shader::setUniformMat4(const GLchar *name, const math::mat4 &matrix) {
+  //
+  glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, matrix.elements);
+}
 } // namespace graphics
 } // namespace churn
