@@ -16,6 +16,11 @@
 #include "graphics/buffers/vertexarray.cpp"
 #include "graphics/buffers/vertexarray.hpp"
 
+#include "graphics/renderable2D.h"
+#include "graphics/renderer2D.hpp"
+#include "graphics/simple2Drenderer.cpp"
+#include "graphics/simple2Drenderer.hpp"
+
 int main() {
   using namespace churn;
   using namespace graphics;
@@ -63,7 +68,7 @@ int main() {
   sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
 
   sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
-  sprite2.addBuffer(new Buffer(vertices, 4 * 4, 4), 1);
+  sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
 
 #endif
 
@@ -74,8 +79,16 @@ int main() {
   shader.setUniformMat4("pr_matrix", ortho);
   shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 
+  Renderable2D sprite(math::vec3(5, 5, 0), math::vec2(4, 4),
+                      math::vec4(2, 4, 5, 1), shader);
+
+  Renderable2D sprite3(math::vec3(5, 1, 0), math::vec2(4, 4),
+                       math::vec4(8, 4, 0, 1), shader);
+
+  Simple2Drenderer renderer;
+
   shader.setUniform2float("light_pos", vec2(4.0f, 1.5f));
-  shader.setUniform4float("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
+  shader.setUniform4float("colour", vec4(0.2f, 0.3f, 0.8f, 0.5f));
 
   while (!window.closed()) {
     window.clear();
@@ -84,24 +97,10 @@ int main() {
     shader.setUniform2float(
         "light_pos",
         vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
-#if 0
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-#else
-    sprite1.bind();
-    ibo.bind();
-    shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
-    glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
-    ibo.unbind();
-    sprite1.unbind();
+    renderer.submit(&sprite);
+    renderer.submit(&sprite3);
+    renderer.flush();
 
-    sprite2.bind();
-    ibo.bind();
-    shader.setUniformMat4("ml_matrix", mat4::translation(vec3(0, 0, 0)));
-    glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
-    ibo.unbind();
-    sprite2.unbind();
-
-#endif
     window.update();
   }
 }
