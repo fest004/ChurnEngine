@@ -4,6 +4,7 @@
 
 #include "renderable2D.h"
 #include "renderer2D.hpp"
+#include "staticSprite.hpp"
 
 namespace churn {
 namespace graphics {
@@ -16,7 +17,7 @@ public:
 
 private:
   // Variables
-  std::deque<const Renderable2D *> m_RenderQueue;
+  std::deque<const StaticSprite *> m_RenderQueue;
 };
 
 } // namespace graphics

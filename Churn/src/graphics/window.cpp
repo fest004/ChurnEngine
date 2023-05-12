@@ -15,6 +15,12 @@ void mouse_button_callback(GLFWwindow *window, int button, int action,
                            int mods);
 void cursor_position_callback(GLFWwindow *window, double xpos, double ypos);
 
+void APIENTRY debug_callback(GLenum source, GLenum type, GLuint id,
+                             GLenum severity, GLsizei length,
+                             const GLchar *message, const void *userParam) {
+  std::cout << "OpenGL Debug Message" << message << std::endl;
+}
+
 Window::Window(const char *title, int width, int height) {
   m_Title = title;
   m_Width = width;
@@ -47,6 +53,7 @@ bool Window::init() {
     std::cout << "Failed to create GLFW window! " << std::endl;
     return false;
   }
+
   glfwMakeContextCurrent(m_Window);
   glfwSetWindowUserPointer(m_Window, this);
   glfwSetWindowSizeCallback(m_Window, window_resize);

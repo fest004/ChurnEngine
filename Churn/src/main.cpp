@@ -16,10 +16,19 @@
 #include "graphics/buffers/vertexarray.cpp"
 #include "graphics/buffers/vertexarray.hpp"
 
+#include "graphics/Batch2DRenderer.cpp"
+#include "graphics/Batch2DRenderer.hpp"
 #include "graphics/renderable2D.h"
 #include "graphics/renderer2D.hpp"
 #include "graphics/simple2Drenderer.cpp"
 #include "graphics/simple2Drenderer.hpp"
+
+#include "graphics/sprite.cpp"
+#include "graphics/sprite.hpp"
+#include "graphics/staticSprite.cpp"
+#include "graphics/staticSprite.hpp"
+
+#define BATCH_RENDERER 1
 
 int main() {
   using namespace churn;
@@ -77,15 +86,20 @@ int main() {
   Shader shader("../src/shaders/basic.vert", "../src/shaders/basic.frag");
   shader.enable();
   shader.setUniformMat4("pr_matrix", ortho);
-  shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+  // shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 
-  Renderable2D sprite(math::vec3(5, 5, 0), math::vec2(4, 4),
-                      math::vec4(2, 4, 5, 1), shader);
+#if BATCH_RENDERER
+  Sprite sprite(5, 5, 4, 4, math::vec4(2, 4, 5, 1));
+  Sprite sprite3(7, 1, 4, 4, math::vec4(8, 4, 0, 1));
 
-  Renderable2D sprite3(math::vec3(5, 1, 0), math::vec2(4, 4),
-                       math::vec4(8, 4, 0, 1), shader);
+  BatchRenderer2D renderer;
+#else
 
   Simple2Drenderer renderer;
+  StaticSprite sprite(5, 5, 4, 4, math::vec4(2, 4, 5, 1), shader);
+  StaticSprite sprite3(7, 1, 4, 4, math::vec4(8, 4, 0, 1), shader);
+
+#endif
 
   shader.setUniform2float("light_pos", vec2(4.0f, 1.5f));
   shader.setUniform4float("colour", vec4(0.2f, 0.3f, 0.8f, 0.5f));
@@ -97,8 +111,16 @@ int main() {
     shader.setUniform2float(
         "light_pos",
         vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
+
+#if BATCH_RENDERER
+    renderer.begin();
+#endif
     renderer.submit(&sprite);
     renderer.submit(&sprite3);
+
+#if BATCH_RENDERER
+    renderer.end();
+#endif
     renderer.flush();
 
     window.update();
