@@ -87,12 +87,37 @@ int main() {
   shader.enable();
   shader.setUniformMat4("pr_matrix", ortho);
   // shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+  
+  std::vector<Renderable2D*> sprites;
+
+  srand(time(NULL));
+
+for (float y = 0; y < 9.0f; y++)
+  {
+    for (float x = 0; x < 16.0f; x++)
+    {
+      sprites.push_back(new 
+#if BATCH_RENDERER
+          Sprite
+#else
+          StaticSprite
+#endif
+          (x, y, 0.9f, 0.9f, math::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)
+#if !BATCH_RENDERER
+          , shader
+#endif
+
+          ));
+
+    }
+  }
+
 
 #if BATCH_RENDERER
   Sprite sprite(5, 5, 4, 4, math::vec4(2, 4, 5, 1));
   Sprite sprite3(7, 1, 4, 4, math::vec4(8, 4, 0, 1));
-
   BatchRenderer2D renderer;
+
 #else
 
   Simple2Drenderer renderer;
@@ -115,9 +140,10 @@ int main() {
 #if BATCH_RENDERER
     renderer.begin();
 #endif
-    renderer.submit(&sprite);
-    renderer.submit(&sprite3);
-
+    for (int i = 0; i < sprites.size(); i++)
+    {
+    renderer.submit(sprites[i]);
+    }
 #if BATCH_RENDERER
     renderer.end();
 #endif
