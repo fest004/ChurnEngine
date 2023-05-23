@@ -28,6 +28,8 @@
 #include "graphics/staticSprite.cpp"
 #include "graphics/staticSprite.hpp"
 
+#include "utils/timer.hpp"
+
 #define BATCH_RENDERER 1
 
 int main() {
@@ -36,7 +38,7 @@ int main() {
   using namespace math;
 
   // @ @-11, 6 + 15, 7 @ @ int main()
-  Window window("Sparky!", 960, 540);
+  Window window("Churn!", 960, 540);
   // glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 #if 0
@@ -92,6 +94,7 @@ int main() {
 
   srand(time(NULL));
 
+
 for (float y = 0; y < 9.0f; y++)
   {
     for (float x = 0; x < 16.0f; x++)
@@ -129,6 +132,14 @@ for (float y = 0; y < 9.0f; y++)
   shader.setUniform2float("light_pos", vec2(4.0f, 1.5f));
   shader.setUniform4float("colour", vec4(0.2f, 0.3f, 0.8f, 0.5f));
 
+
+  //Fps Counter
+  Timer time;
+  float timer = 0;
+  unsigned int frames = 0;
+  
+    
+
   while (!window.closed()) {
     window.clear();
     double x, y;
@@ -148,7 +159,15 @@ for (float y = 0; y < 9.0f; y++)
     renderer.end();
 #endif
     renderer.flush();
-
     window.update();
+
+    //FPS Counter
+    frames++;
+    if (time.elapsed() - timer > 1.0f)
+    {
+      timer += 1.0f;
+      printf("%d fps\n", frames);
+      frames = 0;
+    }
   }
 }
