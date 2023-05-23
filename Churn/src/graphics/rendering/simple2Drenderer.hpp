@@ -4,7 +4,7 @@
 
 #include "renderable2D.h"
 #include "renderer2D.hpp"
-#include "staticSprite.hpp"
+#include "../sprites/staticSprite.hpp"
 
 namespace churn {
 namespace graphics {

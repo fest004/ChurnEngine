@@ -1,5 +1,4 @@
 #include "staticSprite.hpp"
-#include "renderable2D.h"
 
 namespace churn {
 namespace graphics {

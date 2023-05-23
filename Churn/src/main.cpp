@@ -2,8 +2,8 @@
 
 #include <GLFW/glfw3.h>
 
-#include "graphics/shader.cpp"
-#include "graphics/shader.h"
+#include "shaders/shader.cpp"
+#include "shaders/shader.h"
 #include "graphics/window.cpp"
 #include "graphics/window.hpp"
 #include "math/math.hpp"
@@ -16,17 +16,17 @@
 #include "graphics/buffers/vertexarray.cpp"
 #include "graphics/buffers/vertexarray.hpp"
 
-#include "graphics/Batch2DRenderer.cpp"
-#include "graphics/Batch2DRenderer.hpp"
-#include "graphics/renderable2D.h"
-#include "graphics/renderer2D.hpp"
-#include "graphics/simple2Drenderer.cpp"
-#include "graphics/simple2Drenderer.hpp"
+#include "graphics/rendering/Batch2DRenderer.cpp"
+#include "graphics/rendering/Batch2DRenderer.hpp"
+#include "graphics/rendering/renderable2D.h"
+#include "graphics/rendering/renderer2D.hpp"
+#include "graphics/rendering/simple2Drenderer.cpp"
+#include "graphics/rendering/simple2Drenderer.hpp"
 
-#include "graphics/sprite.cpp"
-#include "graphics/sprite.hpp"
-#include "graphics/staticSprite.cpp"
-#include "graphics/staticSprite.hpp"
+#include "graphics/sprites/sprite.cpp"
+#include "graphics/sprites/sprite.hpp"
+#include "graphics/sprites/staticSprite.cpp"
+#include "graphics/sprites/staticSprite.hpp"
 
 #include "utils/timer.hpp"
 

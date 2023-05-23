@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 
-#include "../math/math.hpp"
+#include "../../math/math.hpp"
 #include "renderable2D.h"
 
 namespace churn {

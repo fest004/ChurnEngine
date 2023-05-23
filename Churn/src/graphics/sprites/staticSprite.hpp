@@ -1,6 +1,6 @@
 #pragma once
 
-#include "renderable2D.h"
+#include "../rendering/renderable2D.h"
 namespace churn {
 namespace graphics {
 

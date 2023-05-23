@@ -1,5 +1,4 @@
 #include "simple2Drenderer.hpp"
-#include "staticSprite.hpp"
 
 namespace churn {
 namespace graphics {

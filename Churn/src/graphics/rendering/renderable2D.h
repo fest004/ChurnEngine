@@ -1,11 +1,11 @@
 #pragma once
 
-#include "buffers/buffer.hpp"
-#include "buffers/indexbuffer.hpp"
-#include "buffers/vertexarray.hpp"
+#include "../buffers/buffer.hpp"
+#include "../buffers/indexbuffer.hpp"
+#include "../buffers/vertexarray.hpp"
 
-#include "../math/math.hpp"
-#include "shader.h"
+#include "../../math/math.hpp"
+#include "../../shaders/shader.h"
 
 namespace churn {
 namespace graphics {

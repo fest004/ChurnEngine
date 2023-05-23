@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstddef>
-#include "buffers/indexbuffer.hpp"
+#include "../buffers/indexbuffer.hpp"
 #include "renderer2D.hpp"
 
 namespace churn {
