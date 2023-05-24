@@ -6,8 +6,8 @@ namespace graphics {
 
 class StaticSprite : public Renderable2D {
 public:
-  StaticSprite(float x, float y, float width, float height,
-               const math::vec4 &color, Shader &shader);
+  // Methods
+  StaticSprite(float x, float y, float width, float height, const math::vec4 &color, Shader &shader);
 
   ~StaticSprite();
 
@@ -17,6 +17,7 @@ public:
   inline Shader &getShader() const { return m_Shader; }
 
 private:
+  //Variables
   VertexArray *m_VertexArray;
   IndexBuffer *m_IndexBuffer;
   Shader &m_Shader;

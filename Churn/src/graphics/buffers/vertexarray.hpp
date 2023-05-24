@@ -10,9 +10,12 @@ namespace graphics {
 
 class VertexArray {
 public:
+  //Methods
   VertexArray();
   ~VertexArray();
+
   void addBuffer(Buffer *buffer, GLuint index);
+
   void bind() const;
   void unbind() const;
 
