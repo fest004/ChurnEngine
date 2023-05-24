@@ -9,26 +9,25 @@ namespace graphics {
 // Functions that we do not want to directly check every frame, but let
 // opengl just tell us when it happens
 void window_resize(GLFWwindow *window, int width, int height);
-void key_callback(GLFWwindow *window, int key, int scancode, int action,
-                  int mods);
-void mouse_button_callback(GLFWwindow *window, int button, int action,
-                           int mods);
+void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
+void mouse_button_callback(GLFWwindow *window, int button, int action, int mods);
 void cursor_position_callback(GLFWwindow *window, double xpos, double ypos);
-
-void APIENTRY debug_callback(GLenum source, GLenum type, GLuint id,
-                             GLenum severity, GLsizei length,
-                             const GLchar *message, const void *userParam) {
-  std::cout << "OpenGL Debug Message" << message << std::endl;
+void APIENTRY debug_callback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam) {
+std::cout << "OpenGL Debug Message" << message << std::endl;
 }
 
 Window::Window(const char *title, int width, int height) {
+  //Constructor setting size and title of window
   m_Title = title;
   m_Width = width;
   m_Height = height;
+
+
   if (!init()) {
     glfwTerminate();
   }
 
+  //Activating keyboard keys and mousekeys
   for (int i = 0; i < MAX_KEYS; i++) {
     m_Keys[i] = false;
   }
@@ -54,6 +53,7 @@ bool Window::init() {
     return false;
   }
 
+  //Activating callback functions
   glfwMakeContextCurrent(m_Window);
   glfwSetWindowUserPointer(m_Window, this);
   glfwSetWindowSizeCallback(m_Window, window_resize);
@@ -72,12 +72,16 @@ bool Window::init() {
 const bool Window::closed() { return glfwWindowShouldClose(m_Window) == 1; }
 
 void const Window::update() {
+  // Checking for errors every frame
   GLenum error = glGetError();
   if (error != GL_NO_ERROR)
     std::cout << "OpenGL Error:" << error << std::endl;
+
+  //Resizing window and updating 
   glfwPollEvents();
   glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
   glViewport(0, 0, m_Width, m_Height);
+  
   glfwSwapBuffers(m_Window);
 }
 
@@ -109,16 +113,17 @@ void window_resize(GLFWwindow *window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
-void key_callback(GLFWwindow *window, int key, int scancode, int action,
-                  int mods) {
+void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
   Window *win = (Window *)glfwGetWindowUserPointer(window);
+
   // If key is not released, it means that it is actively being pressed;
   win->m_Keys[key] = action != GLFW_RELEASE;
 }
 
-void mouse_button_callback(GLFWwindow *window, int button, int action,
-                           int mods) {
+void mouse_button_callback(GLFWwindow *window, int button, int action, int mods) {
   Window *win = (Window *)glfwGetWindowUserPointer(window);
+
+  // If key is not released, it means that it is actively being pressed;
   win->m_MouseButtons[button] = action != GLFW_RELEASE;
 }
 

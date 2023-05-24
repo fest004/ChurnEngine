@@ -3,6 +3,9 @@
 namespace churn {
 namespace math {
 
+//Just a vector with 2 elements for representing a 2D coordinate
+//or any 2 value vec
+
 vec2::vec2() {
   x = 0.0f;
   y = 0.0f;
@@ -41,6 +44,8 @@ vec2 &vec2::divide(const vec2 &other) {
   return *this;
 }
 
+//Operator overloading 
+
 vec2 operator+(vec2 left, const vec2 &right) { return left.add(right); }
 
 vec2 operator-(vec2 left, const vec2 &right) { return left.subtract(right); }
@@ -62,6 +67,8 @@ bool vec2::operator==(const vec2 &other) {
 }
 
 bool vec2::operator!=(const vec2 &other) { return !(*this == other); }
+
+//Easy print
 
 std::ostream &operator<<(std::ostream &stream, const vec2 &vector) {
   stream << "vec2: (" << vector.x << ", " << vector.y << ")";

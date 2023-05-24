@@ -3,6 +3,9 @@
 namespace churn {
 namespace math {
 
+// 3 element vector for a 3D coordinate with x, y and z
+// or any other 3 value vec
+
 vec3::vec3() {
   x = 0.0f;
   y = 0.0f;

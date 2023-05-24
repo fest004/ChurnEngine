@@ -3,6 +3,9 @@
 namespace churn {
 namespace math {
 
+
+// Four dimensional data 
+
 vec4::vec4(const float &x, const float &y, const float &z, const float &w) {
   this->x = x;
   this->y = y;

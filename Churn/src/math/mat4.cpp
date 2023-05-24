@@ -4,24 +4,26 @@
 namespace churn {
 namespace math {
 
+// Matrices are to store information about rotation, position and scaling 
+// of pixels.
+
+
+
+// Default constructor creates empty matrix
+
 mat4::mat4() {
   for (int i = 0; i < 4 * 4; i++) {
     elements[i] = 0.0f;
   }
 }
 
-mat4::mat4(float diagonal) {
-  for (int i = 0; i < 4 * 4; i++) {
-    elements[i] = 0.0f;
-  }
-
-  elements[0 + 0 * 4] = diagonal;
-  elements[1 + 1 * 4] = diagonal;
-  elements[2 + 2 * 4] = diagonal;
-  elements[3 + 3 * 4] = diagonal;
-}
-
 mat4 mat4::identity() { return mat4(1.0f); }
+
+// Multiplies to matrices
+//
+// mat41.multiply(mat4 other)
+//
+// Multiplies ecah corresponding index with eachother 
 
 mat4 &mat4::multiply(const mat4 &other) {
   for (int row = 0; row < 4; row++) {
@@ -33,6 +35,7 @@ mat4 &mat4::multiply(const mat4 &other) {
       elements[col + row * 4] = sum;
     }
   }
+
   return *this;
 }
 
@@ -40,8 +43,42 @@ mat4 operator*(mat4 left, const mat4 &right) { return left.multiply(right); }
 
 mat4 &mat4::operator*=(const mat4 &other) { return multiply(other); }
 
-mat4 mat4::orthographic(float left, float right, float bottom, float top,
-                        float near, float far) {
+
+/*
+   x, 0, 0, 0
+   0, x, 0, 0
+   0, 0, x, 0
+   0, 0, 0, x
+
+   Diagonal matrix where x = diagonal
+*/
+
+
+mat4::mat4(float diagonal) {
+  for (int i = 0; i < 4 * 4; i++) {
+    elements[i] = 0.0f;
+  }
+  elements[0 + 0 * 4] = diagonal;
+  elements[1 + 1 * 4] = diagonal;
+  elements[2 + 2 * 4] = diagonal;
+  elements[3 + 3 * 4] = diagonal;
+}
+
+
+/*
+Orthographic matrix:
+
+| 2/(right - left)     0                   0                -(right + left)/(right - left) 
+|                                                                                             
+|     0           2/(top - bottom)         0              -(top + bottom)/(top - bottom)   
+|                                                                                             
+|     0                0           -2/(far - near)     -(far + near)/(far - near)           
+|                                                                                             
+|     0                0                   0                         1                       
+   */
+
+
+mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far) {
   mat4 result(1.0f);
 
   result.elements[0 + 0 * 4] = 2.0f / (right - left);
@@ -55,6 +92,16 @@ mat4 mat4::orthographic(float left, float right, float bottom, float top,
   return result;
 }
 
+/*
+ 
+Perspective matrix
+
+   a              0              0              0    
+   0              q              0              0    
+   0              0              b              c    
+   0              0              -1             0    
+   */
+
 mat4 mat4::perspective(float fov, float aspectRatio, float near, float far) {
   mat4 result(1.0f);
 
@@ -62,6 +109,7 @@ mat4 mat4::perspective(float fov, float aspectRatio, float near, float far) {
   float a = q / aspectRatio;
   float b = (near + far) / (near - far);
   float c = (2.0f * near * far) / (near - far);
+
   result.elements[0 + 0 * 4] = a;
   result.elements[1 + 1 * 4] = q;
   result.elements[2 + 2 * 4] = b;
@@ -70,6 +118,14 @@ mat4 mat4::perspective(float fov, float aspectRatio, float near, float far) {
 
   return result;
 }
+
+/*
+Translation matrix where t = vec3 translation
+   1     0     0     t.x   
+   0     1     0     t.y   
+   0     0     1     t.z   
+   0     0     0     1    
+*/
 
 mat4 mat4::translation(const vec3 &translation) {
   mat4 result(1.0f);
@@ -81,6 +137,15 @@ mat4 mat4::translation(const vec3 &translation) {
   return result;
 }
 
+/*
+Scale matrix where s = vec3 scale
+   sx    0     0     0   
+   0     sy    0     0   
+   0     0     sz    0   
+   0     0     0     1   
+
+*/
+
 mat4 mat4 ::scale(const vec3 &scale) {
   mat4 result(1.0f);
 
@@ -90,6 +155,14 @@ mat4 mat4 ::scale(const vec3 &scale) {
 
   return result;
 }
+
+/*
+ Rotation matrix, idfk
+   r11    r12    r13    0   
+   r21    r22    r23    0   
+   r31    r32    r33    0   
+   0      0      0      1   
+*/
 
 mat4 mat4::rotation(float angle, const vec3 &axis) {
   mat4 result(1.0f);
