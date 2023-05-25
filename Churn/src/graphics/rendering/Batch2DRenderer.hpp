@@ -7,7 +7,7 @@
 namespace churn {
 namespace graphics {
 
-#define RENDERER_MAX_SPRITES 60000
+#define RENDERER_MAX_SPRITES 150000 
 #define RENDERER_VERTEX_SIZE sizeof(VertexData)
 #define RENDERER_SPRITE_SIZE RENDERER_VERTEX_SIZE * 4
 #define RENDERER_BUFFER_SIZE RENDERER_SPRITE_SIZE *RENDERER_MAX_SPRITES
@@ -19,10 +19,10 @@ namespace graphics {
 class BatchRenderer2D : public Renderer2D {
 public:
   // Methods
-  void begin();
+  void begin() override;
   void submit(const Renderable2D *renderable) override;
   void flush() override;
-  void end();
+  void end() override;
   BatchRenderer2D();
   ~BatchRenderer2D();
 

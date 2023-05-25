@@ -1,4 +1,5 @@
 #include "mat4.hpp"
+#include <memory.h>
 #include "radians.hpp"
 
 namespace churn {
@@ -26,15 +27,19 @@ mat4 mat4::identity() { return mat4(1.0f); }
 // Multiplies ecah corresponding index with eachother 
 
 mat4 &mat4::multiply(const mat4 &other) {
+
+  float data[16];
+
   for (int row = 0; row < 4; row++) {
     for (int col = 0; col < 4; col++) {
       float sum = 0.0f;
       for (int elem = 0; elem < 4; elem++) {
         sum += elements[col + elem * 4] * other.elements[elem + row];
       }
-      elements[col + row * 4] = sum;
+      data[col + row * 4] = sum;
     }
   }
+  memcpy(elements, data, 4 * 4 * sizeof(float));
 
   return *this;
 }
