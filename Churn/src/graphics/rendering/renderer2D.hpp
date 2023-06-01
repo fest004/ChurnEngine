@@ -1,12 +1,15 @@
 #pragma once
 
 #include <glad/glad.h>
+#include <vector>
 
 #include "../../math/math.hpp"
-#include "renderable2D.h"
+
 
 namespace churn {
 namespace graphics {
+
+class Renderable2D;
 
 class Renderer2D {
 public:

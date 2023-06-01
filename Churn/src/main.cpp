@@ -37,6 +37,9 @@
 #include "graphics/layers/tilelayer.cpp"
 #include "graphics/layers/tilelayer.hpp"
 
+#include "graphics/layers/groups/group.cpp"
+#include "graphics/layers/groups/group.hpp"
+
 #include "utils/timer.hpp"
 
 #define TEST_SPRITES 0
@@ -78,9 +81,16 @@ int main()
 	}
 #else
 
-	Sprite* button = new Sprite(-15.0f, 5.0f, 6, 3, math::vec4(1, 1, 1, 1));
-	layer.add(button);
-	layer.add(new Sprite(0.5f, 0.5f, 5.0f, 2.0f, math::vec4(1, 0, 1, 1)));
+  Group* group = new Group(mat4::translation(math::vec3(-15.0f, 5.0f, 0.0f)));
+	group->add(new Sprite(0, 0, 6, 3, math::vec4(1, 1, 1, 1)));
+
+	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
+	button->add(new Sprite(0, 0, 5.0f, 2.0f, math::vec4(1, 0, 1, 1)));
+	button->add(new Sprite(0.5f, 0.5f, 3.0f, 1.0f, math::vec4(0.2f, 0.3f, 0.8f, 1)));
+	group->add(button);
+
+	layer.add(group);
+
 
 #endif
 

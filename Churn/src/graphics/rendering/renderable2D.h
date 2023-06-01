@@ -6,6 +6,7 @@
 
 #include "../../math/math.hpp"
 #include "../../shaders/shader.h"
+#include "renderer2D.hpp"
 
 namespace churn {
 namespace graphics {
@@ -25,6 +26,13 @@ public:
 
   virtual ~Renderable2D() {}
 
+
+
+  virtual void submit(Renderer2D* renderer) const
+  {
+    renderer->submit(this);
+  }
+
 public:
   // Methods
   inline const math::vec3 &getPosition() const { return m_Position; }
@@ -33,6 +41,11 @@ public:
     return m_Color;
     ;
   }
+
+protected:
+  //Methods
+  Renderable2D() {}
+
 
 protected:
   // Variables

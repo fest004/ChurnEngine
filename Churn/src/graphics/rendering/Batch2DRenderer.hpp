@@ -1,8 +1,10 @@
 #pragma once
 
 #include <cstddef>
-#include "../buffers/indexbuffer.hpp"
+#include "renderable2D.h"
 #include "renderer2D.hpp"
+#include "../buffers/indexbuffer.hpp"
+
 
 namespace churn {
 namespace graphics {
