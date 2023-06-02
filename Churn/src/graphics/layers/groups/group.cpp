@@ -3,6 +3,7 @@
 namespace churn {
 namespace graphics {
 
+
 Group::Group(const math::mat4& transform) :m_TransformationMatrix(transform)
 {
 }
@@ -21,6 +22,7 @@ void Group::add(Renderable2D* renderable)
 {
   m_Renderables.push_back(renderable);
 }
+
 
 } // namespace graphics
 } // namespace churn

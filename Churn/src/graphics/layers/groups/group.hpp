@@ -21,5 +21,6 @@ class Group : public Renderable2D
     math::mat4 m_TransformationMatrix;
 };
 
+
 } // namespace graphics
 } // namespace churn
