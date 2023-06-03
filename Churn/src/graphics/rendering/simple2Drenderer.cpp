@@ -1,4 +1,5 @@
 #include "simple2Drenderer.hpp"
+#include "renderable2D.h"
 
 namespace churn {
 namespace graphics {

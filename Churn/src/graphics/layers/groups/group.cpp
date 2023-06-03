@@ -3,26 +3,25 @@
 namespace churn {
 namespace graphics {
 
+Group::Group(const math::mat4& transform)
+		: m_TransformationMatrix(transform)
+	{
+	}
 
-Group::Group(const math::mat4& transform) :m_TransformationMatrix(transform)
-{
-}
+	void Group::add(Renderable2D* renderable)
+	{
+		m_Renderables.push_back(renderable);
+	}
 
-void Group::submit(Renderer2D *renderer) const
-{
-  renderer->push(m_TransformationMatrix);
-  for (const Renderable2D *renderable : m_Renderables) {
-    renderable->submit(renderer);
-  }
-  renderer->pop();
-}
+	void Group::submit(Renderer2D* renderer) const
+	{
+		renderer->push(m_TransformationMatrix);
 
+		for (const Renderable2D* renderable : m_Renderables)
+			renderable->submit(renderer);
 
-void Group::add(Renderable2D* renderable)
-{
-  m_Renderables.push_back(renderable);
-}
-
+		renderer->pop();
+	}
 
 } // namespace graphics
 } // namespace churn

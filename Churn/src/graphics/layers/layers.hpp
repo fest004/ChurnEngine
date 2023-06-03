@@ -17,15 +17,6 @@ public:
 protected:
   //Methods
   Layer(Renderer2D *renderer, Shader *shader, math::mat4 projectionMatrix);
-public:
-  // Variables
-
-private:
-  // Methods
-
-private:
-  // Variables
-  
 
 protected:
   //Variables

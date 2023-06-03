@@ -5,7 +5,8 @@ namespace graphics {
 
 // Simple staticsprite only takes position, size and color and renders it
 StaticSprite::StaticSprite(float x, float y, float width, float height, const math::vec4 &color, Shader &shader)
-: Renderable2D(math::vec3(x, y, 0), math::vec2(width, height), color), m_Shader(shader) {
+: Renderable2D(math::vec3(x, y, 0), math::vec2(width, height), color), m_Shader(shader) 
+{
 
 //Creates new vertexArray to store vertex data about the sprite
   m_VertexArray = new VertexArray();
