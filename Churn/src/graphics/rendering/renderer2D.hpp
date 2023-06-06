@@ -15,23 +15,28 @@ class Renderable2D;
 	class Renderer2D
 	{
 	protected:
-		std::vector<math::mat4> m_TransformationStack;
-		const math::mat4* m_TransformationBack;
-	protected:
+		//Methods
 		Renderer2D()
 		{
 			m_TransformationStack.push_back(math::mat4::identity());
 			m_TransformationBack = &m_TransformationStack.back();
 		}
+
+
 	public:
-		void push(const math::mat4& matrix, bool override = false)
+		//Methods
+		
+		void push(const math::mat4& matrix, bool force = false)
 		{
-			if (override)
+			if (force)
 				m_TransformationStack.push_back(matrix);
 			else
 				m_TransformationStack.push_back(m_TransformationStack.back() * matrix);
+
 			m_TransformationBack = &m_TransformationStack.back();
 		}
+
+
 		void pop()
 		{
 			// TODO: Add to log!
@@ -43,6 +48,12 @@ class Renderable2D;
 		virtual void submit(const Renderable2D* renderable) = 0;
 		virtual void end() {}
 		virtual void flush() = 0;
+
+	protected:
+		//Variables
+		std::vector<math::mat4> m_TransformationStack;
+		const math::mat4* m_TransformationBack;
+	
 };
 
 

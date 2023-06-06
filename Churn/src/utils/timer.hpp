@@ -18,12 +18,12 @@ public:
 
   void reset() { clock_gettime(CLOCK_MONOTONIC, &m_Start); }
 
+  //Returns elapsed time since starting clock 
   float elapsed() 
   {
     timespec current;
     clock_gettime(CLOCK_MONOTONIC, &current);
-    long long elapsedNanos = (current.tv_sec - m_Start.tv_sec) * 1000000000LL +
-                             (current.tv_nsec - m_Start.tv_nsec);
+    long long elapsedNanos = (current.tv_sec - m_Start.tv_sec) * 1000000000LL + (current.tv_nsec - m_Start.tv_nsec);
     return static_cast<float>(elapsedNanos) * m_Frequency;
   }
 

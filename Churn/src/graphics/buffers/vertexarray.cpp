@@ -24,7 +24,9 @@ void VertexArray::addBuffer(Buffer *buffer, GLuint index) {
 
 
   glEnableVertexAttribArray(index);
-  glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 0, 0); //Tells gl what kinda data it is given
+
+//Tells gl what kinda data it is given
+  glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 0, 0); 
                                                         //Datatype, normalise, stride, offset
 
 

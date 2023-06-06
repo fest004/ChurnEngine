@@ -1,3 +1,5 @@
+#include <FreeImage.h>
+
 #include <glad/glad.h>
 
 #include <GLFW/glfw3.h>
@@ -43,13 +45,18 @@
 #include "utils/timer.hpp"
 
 
+
+
 #define TEST_50K_SPRITES 0
+
+#if 0
 
 int main()
 {
 	using namespace churn;
 	using namespace graphics;
 	using namespace math;
+
 
 	Window window("churn", 960, 540);
 	// glClearColor(0.5f, 1.0f, 0.6f, 0.3f);
@@ -125,3 +132,59 @@ int main()
 	return 0;
 }
 
+#endif
+
+
+int main()
+{
+	//PATH IS RELATIVE TO BUILD DESTINATION NOT SOURCE DESTINATION
+const char* filename = "test.png";
+FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
+FIBITMAP* dib(0);
+BYTE* bits(0);
+unsigned int width(0), height(0);
+GLuint gl_texID;
+
+// Check the file signature and deduce its format
+fif = FreeImage_GetFileType(filename, 0);
+
+// If still unknown, try to guess the file format from the file extension
+if (fif == FIF_UNKNOWN)
+    fif = FreeImage_GetFIFFromFilename(filename);
+
+// If still unknown, return failure
+if (fif == FIF_UNKNOWN)
+    return false;
+
+// Check that the plugin has reading capabilities and load the file
+if (FreeImage_FIFSupportsReading(fif))
+    dib = FreeImage_Load(fif, filename);
+
+// If the image failed to load, return failure
+if (!dib)
+    return false;
+
+// Retrieve the image data
+bits = FreeImage_GetBits(dib);
+// Get the image width and height
+width = FreeImage_GetWidth(dib);
+height = FreeImage_GetHeight(dib);
+
+// If any of the above failed (bits, width, height), return failure
+if ((bits == 0) || (width == 0) || (height == 0))
+    return false;
+
+// Output the image width and height
+std::cout << width << ", " << height << std::endl;
+
+
+	// int width, height, channels;
+	// unsigned char* imageData = stbi_load("test.png", &width, &height, &channels, STBI_rgb_alpha);
+	// if (imageData == nullptr) {
+	// 	std::cout << "Failed" << stbi_failure_reason() << std::endl;
+	// }
+	//
+	// std::cout << width << ", " << height << std::endl;
+	//
+ //  return 0;
+}

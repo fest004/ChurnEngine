@@ -3,6 +3,9 @@
 namespace churn {
 namespace graphics {
 
+
+//Adds possibility for adding layers, eg. photoshop layer with background and foreground
+
 Layer::Layer(Renderer2D* renderer, Shader* shader, math::mat4 projectionMatrix)
 		: m_Renderer(renderer), m_Shader(shader), m_ProjectionMatrix(projectionMatrix)
 	{
@@ -17,10 +20,15 @@ Layer::Layer(Renderer2D* renderer, Shader* shader, math::mat4 projectionMatrix)
 		for (int i = 0; i < m_Renderables.size(); i++)
 			delete m_Renderables[i];
 	}
+
+
+	//Adds a renderable to stream of renderables
 	void Layer::add(Renderable2D* renderable)
 	{
 		m_Renderables.push_back(renderable);
 	}
+
+
 	void Layer::render()
 	{
 		m_Shader->enable();

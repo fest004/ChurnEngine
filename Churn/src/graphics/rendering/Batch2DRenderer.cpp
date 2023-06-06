@@ -56,6 +56,7 @@ BatchRenderer2D::BatchRenderer2D()
 		m_Buffer = (VertexData*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 	}
 
+		// Submit renderable (sprite, texture... )
 	void BatchRenderer2D::submit(const Renderable2D* renderable)
 	{
 		const math::vec3& position = renderable->getPosition();
