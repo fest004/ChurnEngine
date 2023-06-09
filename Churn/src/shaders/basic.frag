@@ -1,29 +1,21 @@
-#version 330 core
-layout (location = 0) out vec4 color;
+#version 120
 
-// Uniforms being passed by the CPU to the shader program
-// to be compiled by the GPU
-
+//layout (location = 0) out vec4 color;
 
 uniform vec4 colour;
 uniform vec2 light_pos;
 
-
-//Input variables
-in vec4 pos;
-in DATA
+/*in DATA
 {
-  vec4 position;
-  vec4 color;
-} fs_in;
+	vec4 position;
+	vec4 color;
+} fs_in;*/
+
+uniform sampler2D tex;
 
 void main()
 {
-  // Calculates the intensity of the light based on the distance of the
-  // source to the fragment, and then sets the color based on the input color
-  // and the intensity of the lighting
-  float intensity = 1.0f / length(fs_in.position.xy - light_pos);
-  // color = colour * intensity;
-  color = fs_in.color * intensity;
-    
+	//float intensity = 1.0 / length(fs_in.position.xy - light_pos);
+	// color = colour * intensity;
+	gl_FragColor = texture2D(tex, gl_TexCoord[0].st); //fs_in.color * intensity;
 }

@@ -42,14 +42,19 @@
 #include "graphics/layers/groups/group.cpp"
 #include "graphics/layers/groups/group.hpp"
 
+
+#include "graphics/sprites/texture.cpp"
+#include "graphics/sprites/texture.h"
+
 #include "utils/timer.hpp"
 
 
 
 
 #define TEST_50K_SPRITES 0
+#define TEST_FREEIMAGE 0
 
-#if 0
+#if !TEST_FREEIMAGE 
 
 int main()
 {
@@ -61,16 +66,17 @@ int main()
 	Window window("churn", 960, 540);
 	// glClearColor(0.5f, 1.0f, 0.6f, 0.3f);
 
-	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
+mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
-  Shader* s = new Shader("../src/shaders/basic.vert", "../src/shaders/basic.frag");
-
+	Shader* s = new Shader("../src/shaders/basic.vert", "../src/shaders/basic.frag");
+	Shader* s2 = new Shader("../src/shaders/basic.vert", "../src/shaders/basic.frag");
 	Shader& shader = *s;
-
+	Shader& shader2 = *s2;
 	shader.enable();
-
-	shader.setUniform2float("light_pos", vec2(2.0f, 1.5f));
+	shader2.enable();
+	shader.setUniform2f("light_pos", vec2(4.0f, 1.5f));
+	shader2.setUniform2f("light_pos", vec2(4.0f, 1.5f));
 
 	TileLayer layer(&shader);
 
@@ -79,10 +85,9 @@ int main()
 	{
 		for (float x = -16.0f; x < 16.0f; x += 0.1)
 		{
-			layer.add(new Sprite(x, y, 0.09f, 0.09f, math::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
+			layer.add(new Sprite(x, y, 0.09f, 0.09f, maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
 		}
 	}
-
 #else
 
 	Group* group = new Group(mat4::translation(math::vec3(-15.0f, 5.0f, 0.0f)));
@@ -96,28 +101,44 @@ int main()
 	layer.add(group);
 
 #endif
-	//
-	// Group* group2 = new Group(mat4::translation(vec3(1.0f, 1.0f, 0.0f)));
-	// group2->add(new Sprite(8.0f, 8.0f, 9.09f, 9.09f, math::vec4(0.8f, 0.5f, 1, 1)));
-	//
 
+	TileLayer layer2(&shader2);
+	layer2.add(new Sprite(-2, -2, 4, 4, math::vec4(1, 0, 1, 1)));
+	glActiveTexture(GL_TEXTURE0);
+	Texture texture("imgs/test.png");
+	texture.bind();
 
-
-
+	shader.enable();
+	shader.setUniform1i("tex", 0);
+	shader.setUniformMat4("pr_matrix", math::mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 	Timer time;
 	float timer = 0;
 	unsigned int frames = 0;
-
 	while (!window.closed())
 	{
 		window.clear();
-		double x, y;
-		window.getMousePosition(x, y);
 		shader.enable();
-		shader.setUniform2float("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
+/*		double x, y;
+		window.getMousePosition(x, y);
+		shader.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
+		//shader.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.0f - 16.0f), (float)(9.0f - y * 18.0f / 540.0f)));
+		//shader.setUniform2f("light_pos", vec2(-8, -3));
+		shader2.enable();
+		layer.render();*/
+	//	layer2.render();
 
-		layer.render();
+		glBegin(GL_QUADS);
+		glTexCoord2f(0, 0);
+		glVertex2f(0, 0);
+		glTexCoord2f(0, 1);
+		glVertex2f(0, 4);
+		glTexCoord2f(1, 1);
+		glVertex2f(4, 4);
+		glTexCoord2f(1, 0);
+		glVertex2f(4, 0);
+		glEnd();
 
+		std::cout << texture.getHeight() << std::endl;
 
 		window.update();
 		frames++;
@@ -130,9 +151,10 @@ int main()
 	}
 	
 	return 0;
-}
 
-#endif
+
+}
+#else
 
 
 int main()
@@ -188,3 +210,5 @@ std::cout << width << ", " << height << std::endl;
 	//
  //  return 0;
 }
+
+#endif
