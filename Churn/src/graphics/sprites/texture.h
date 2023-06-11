@@ -22,6 +22,7 @@ class Texture
 
     inline const unsigned int getWidth() const { return m_Width; }
     inline const unsigned int getHeight() const { return m_Height; }
+    inline const GLuint getID() const { return m_TextureID; }
 
   private:
     //Variables

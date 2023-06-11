@@ -7,6 +7,7 @@
 #include "../../math/math.hpp"
 #include "../../shaders/shader.h"
 #include "renderer2D.hpp"
+#include "../sprites/texture.h"
 
 namespace churn {
 namespace graphics {
@@ -18,6 +19,7 @@ struct VertexData
 		math::vec3 vertex;
 		math::vec2 uv; // Texture coordinate
 		// unsigned int textureID;
+		float textureID;
 		unsigned int color;
 	};
 	class Renderable2D
@@ -28,6 +30,7 @@ struct VertexData
 		math::vec2 m_Size;
 		math::vec4 m_Color;
 		std::vector<math::vec2> m_UV;
+		Texture* m_Texture;
 	protected:
 		Renderable2D() 
 		{ 
@@ -52,6 +55,9 @@ struct VertexData
 		inline const math::vec2& getSize() const { return m_Size; }
 		inline const math::vec4& getColor() const { return m_Color; }
 		inline const std::vector<math::vec2>& getUV() const { return m_UV; }
+
+
+		inline const GLuint getTextureID() const { return m_Texture == nullptr ? 0 : m_Texture->getID(); }
 	private:
 		void setUVDefaults()
 		{
