@@ -72,48 +72,45 @@ BatchRenderer2D::BatchRenderer2D()
 		const std::vector<math::vec2>& uv = renderable->getUV();
 		const GLuint textureID = renderable->getTextureID();
 
-		unsigned c = 0;
 
-		// If there are textures to render render them
+		unsigned int c = 0;
+
 		float textureSlot = 0.0f;
-		if (textureID > 0) {
-			float textureSlot = 0.0f;
+		if (textureID > 0)
+		{
 			bool found = false;
-
-			for (int i = 0; m_TextureSlots.size(); i++) {
-				if (m_TextureSlots[i] == textureID) {
-					textureSlot = (float)i;
+			for (int i = 0; i < m_TextureSlots.size(); i++)
+			{
+				if (m_TextureSlots[i] == textureID)
+				{
+					textureSlot = (float)(i + 1);
 					found = true;
 					break;
 				}
 			}
 
-			if (!found) {
-
+			if (!found)
+			{
 				if (m_TextureSlots.size() >= 32)
-					end();
-				flush();
-				begin();
 				{
-					m_TextureSlots.push_back(textureID);
-					textureSlot = (float)m_TextureSlots.size() - 1;
-
+					end();
+					flush();
+					begin();
 				}
+				m_TextureSlots.push_back(textureID);
+				textureSlot = (float)(m_TextureSlots.size());
 			}
-
-
-		} else {
-			// Else enable possibility to render filled shapes
-
-		int r = color.x * 255.0f;
-		int g = color.y * 255.0f;
-		int b = color.z * 255.0f;
-		int a = color.w * 255.0f;
-
-		unsigned int c = a << 24 | b << 16 | g << 8 | r;
 		}
+		else
+		{
+			int r = color.x * 255.0f;
+			int g = color.y * 255.0f;
+			int b = color.z * 255.0f;
+			int a = color.w * 255.0f;
 
-		m_Buffer->vertex = *m_TransformationBack * position;
+			c = a << 24 | b << 16 | g << 8 | r;
+		}
+				m_Buffer->vertex = *m_TransformationBack * position;
 		m_Buffer->uv = uv[0];
 		m_Buffer->textureID= textureSlot;
 		m_Buffer->color = c;
