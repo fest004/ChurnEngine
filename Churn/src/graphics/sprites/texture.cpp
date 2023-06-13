@@ -29,8 +29,8 @@ namespace graphics {
 		glBindTexture(GL_TEXTURE_2D, result);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		// If 16 bit set GL_RGBA to GL_RGB and GL_BGRA = GL_BGR
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_Width, m_Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, pixels);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_Width, m_Height, 0, GL_BGR, GL_UNSIGNED_BYTE, pixels); // 32 Bit textures
+		// glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_Width, m_Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, pixels); // 16 Bit textures
 		glBindTexture(GL_TEXTURE_2D, 0);
 
     // delete[] pixels;

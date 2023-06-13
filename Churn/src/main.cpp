@@ -76,13 +76,19 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 	TileLayer layer(&shader);
 
 
-	Texture texture("imgs/zelda.png");
+	Texture* textures[]  = 
+	{
+		new Texture("imgs/ta.png"),
+		new Texture("imgs/tb.png"),
+		new Texture("imgs/tc.png")
+	};
+
 	for (float y = -9.0f; y < 9.0f; y++)
 	{
 		for (float x = -16.0f; x < 16.0f; x++)
 		{
 //			layer.add(new Sprite(x, y, 0.9f, 0.9f, math::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)));
-			layer.add(new Sprite(x, y, 0.9f, 0.9f, &texture));
+			layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 3]));
 		}
 	}
 
@@ -115,6 +121,8 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 		}
 	}
 	
+	for (auto texture : textures)
+		delete texture;
 	return 0;
 
 

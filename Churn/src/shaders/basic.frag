@@ -23,7 +23,7 @@ void main()
  // texColor = texture(textures[tid], fs_in.uv); GIVES ERROR SO UGLY SWITCH INSTEAD
 
 if (fs_in.tid > 0.0) {
-    int tid = int(fs_in.tid + 0.5);
+    int tid = int(fs_in.tid - 0.5);
     switch (tid) {
         case 0:
             texColor = texture(textures[0], fs_in.uv);
