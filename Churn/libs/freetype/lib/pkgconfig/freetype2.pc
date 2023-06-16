@@ -1,0 +1,14 @@
+prefix=/home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype
+exec_prefix=/home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype
+libdir=/home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype/lib
+includedir=/home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype/include
+
+Name: FreeType 2
+URL: https://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 24.0.18
+Requires:
+Requires.private: zlib, libpng, libbrotlidec
+Libs: -L${libdir} -lfreetype
+Libs.private: 
+Cflags: -I${includedir}/freetype2

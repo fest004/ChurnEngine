@@ -1,3 +1,6 @@
+#include <ft2build.h>
+#include FT_FREETYPE_H
+
 #include <FreeImage.h>
 
 #include <glad/glad.h>
@@ -60,6 +63,14 @@ int main()
 	using namespace churn;
 	using namespace graphics;
 	using namespace math;
+
+	 FT_Library ft;
+    if (FT_Init_FreeType(&ft)) {
+        std::cout << "Failed to initialize FreeType library." << std::endl;
+        return -1;
+    }
+
+
 
 
 	Window window("churn", 960, 540);
