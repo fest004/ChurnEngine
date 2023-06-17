@@ -9,7 +9,7 @@ find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(Freetype REQUIRED)
 
-file(GLOB_RECURSE glfreetype libs/glfreetype/src/*.cpp libs/glfreetype/include/glfreetype/*.hpp)
+file(GLOB_RECURSE glfreetype libs/glfreetype/src/*.cpp libs/glfreetype/include/*.h)
 file(GLOB_RECURSE freetype_gl libs/freetype-gl/*.c libs/freetype-gl/*.h)
 
 # Add the path to the include directories
@@ -39,52 +39,12 @@ target_compile_options(freetype_gl_lib PUBLIC ${COMP_FLAGS})
 target_link_libraries(Churn PRIVATE
     ${OPENGL_LIBRARIES}
     glfw
-    freetype
-    freeimage
     glfreetype_lib
     freetype_gl_lib
+    freetype
+    freeimage
 )
 
-
-# cmake_minimum_required(VERSION 3.12)
-# project(Churn)
-#
-# set(CMAKE_CXX_STANDARD 11)
-# set(CMAKE_BUILD_TYPE Debug)
-#
-# # Find required libraries
-# find_package(OpenGL REQUIRED)
-# find_package(glfw3 REQUIRED)
-# find_package(Freetype REQUIRED)
-#
-# # Add the path to the include directories
-# include_directories(
-#     ${OPENGL_INCLUDE_DIRS}
-#     ${GLFW_INCLUDE_DIRS}
-#     ${CMAKE_SOURCE_DIR}/libs/freetype-gl
-# )
-#
-# # Add your existing source files
-# set(SOURCES
-#     src/main.cpp
-#     libs/glad/glad.c
-# )
-#
-# add_library(
-#     freetype-gl STATIC
-#     libs/freetype-gl/*.c
-#     )
-#
-# # Add your executable target
-# add_executable(Churn ${SOURCES})
-#
-# # Link required libraries to your executable
-# target_link_libraries(Churn PRIVATE
-#     ${OPENGL_LIBRARIES}
-#     glfw
-#     freeimage
-#     freetype
-#     freetype-gl
 
 
 

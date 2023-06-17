@@ -48,6 +48,7 @@ class Renderable2D;
 		virtual void submit(const Renderable2D* renderable) = 0;
 		virtual void end() {}
 		virtual void flush() = 0;
+		virtual void drawString(const std::string& text, const math::vec3& position, const math::vec4& color) {}
 
 	protected:
 		//Variables

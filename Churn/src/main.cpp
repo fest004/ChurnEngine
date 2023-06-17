@@ -51,9 +51,6 @@
 
 #include "utils/timer.hpp"
 
-
-
-
 #define TEST_FREEIMAGE 0
 
 #if !TEST_FREEIMAGE 
@@ -63,14 +60,6 @@ int main()
 	using namespace churn;
 	using namespace graphics;
 	using namespace math;
-
-	 FT_Library ft;
-    if (FT_Init_FreeType(&ft)) {
-        std::cout << "Failed to initialize FreeType library." << std::endl;
-        return -1;
-    }
-
-
 
 
 	Window window("churn", 960, 540);

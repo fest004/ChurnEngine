@@ -5,6 +5,8 @@
 #include "renderer2D.hpp"
 #include "../buffers/indexbuffer.hpp"
 
+#include "../../../libs/freetype-gl/freetype-gl.h"
+
 
 namespace churn {
 namespace graphics {
@@ -27,6 +29,7 @@ public:
   void submit(const Renderable2D *renderable) override;
   void flush() override;
   void end() override;
+	void drawString(const std::string& text, const math::vec3& position, const math::vec4& color) override;
   BatchRenderer2D();
   ~BatchRenderer2D();
 
@@ -39,6 +42,9 @@ private:
   VertexData *m_Buffer;
 
   std::vector<GLuint> m_TextureSlots;
+
+  ftgl::texture_atlas_t* m_FTTexAtlas;
+  ftgl::texture_font_t* m_FTFont;
 
   void init();
 };

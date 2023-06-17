@@ -55,6 +55,11 @@ BatchRenderer2D::BatchRenderer2D()
 		m_IBO = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 
 		glBindVertexArray(0);
+		
+		m_FTTexAtlas = ftgl::texture_atlas_new(512, 512, 1);
+		m_FTFont = ftgl::texture_font_new_from_file(m_FTTexAtlas, 20, "fonts/agaveRegular.ttf");
+
+		ftgl::texture_font_get_glyph(m_FTFont,"A") ;
 	}
 
 	void BatchRenderer2D::begin()
@@ -110,7 +115,7 @@ BatchRenderer2D::BatchRenderer2D()
 
 			c = a << 24 | b << 16 | g << 8 | r;
 		}
-				m_Buffer->vertex = *m_TransformationBack * position;
+		m_Buffer->vertex = *m_TransformationBack * position;
 		m_Buffer->uv = uv[0];
 		m_Buffer->textureID= textureSlot;
 		m_Buffer->color = c;
@@ -135,6 +140,58 @@ BatchRenderer2D::BatchRenderer2D()
 		m_Buffer++;
 
 		m_IndexCount += 6;
+	}
+
+	void BatchRenderer2D::drawString(const std::string& text, const math::vec3& position, const math::vec4& color) 
+	{
+		using namespace ftgl;
+
+		float textureSlot = 0.0f;
+			bool found = false;
+			for (int i = 0; i < m_TextureSlots.size(); i++)
+			{
+				if (m_TextureSlots[i] == m_FTTexAtlas->id)
+				{
+					textureSlot = (float)(i + 1);
+					found = true;
+					break;
+				}
+			}
+
+			if (!found)
+			{
+				if (m_TextureSlots.size() >= 32)
+				{
+					end();
+					flush();
+					begin();
+				}
+				m_TextureSlots.push_back(m_FTTexAtlas->id);
+				textureSlot = (float)(m_TextureSlots.size());
+			}
+
+	m_Buffer->vertex = math::vec3(-8, -8, 0);
+		m_Buffer->uv = math::vec2(0, 1);
+		m_Buffer->textureID= textureSlot;
+		m_Buffer++;
+
+		m_Buffer->vertex = math::vec3(-8, 8, 0);
+		m_Buffer->uv = math::vec2(0, 0);
+		m_Buffer->textureID= textureSlot;
+		m_Buffer++;
+
+		m_Buffer->vertex = math::vec3(-8, 8, 0);
+		m_Buffer->uv = math::vec2(1, 0);
+		m_Buffer->textureID= textureSlot;
+		m_Buffer++;
+
+		m_Buffer->vertex = math::vec3(8, -8, 0);
+		m_Buffer->uv = math::vec2(1, 1);
+		m_Buffer->textureID= textureSlot;
+		m_Buffer++;
+
+		m_IndexCount += 6;
+
 	}
 
 	void BatchRenderer2D::end()
