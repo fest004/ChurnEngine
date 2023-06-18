@@ -55,6 +55,7 @@ struct VertexData
 		inline const math::vec2& getSize() const { return m_Size; }
 		inline const math::vec4& getColor() const { return m_Color; }
 		inline const std::vector<math::vec2>& getUV() const { return m_UV; }
+		inline const GLuint getTID() const { return m_Texture ? m_Texture->getID() : 0; }
 
 
 		inline const GLuint getTextureID() const { return m_Texture == nullptr ? 0 : m_Texture->getID(); }

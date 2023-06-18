@@ -34,6 +34,8 @@
 #include "graphics/sprites/staticSprite.cpp"
 #include "graphics/sprites/staticSprite.hpp"
 
+#include "graphics/label.cpp"
+#include "graphics/label.hpp"
 
 
 #include "graphics/layers/layers.cpp"
@@ -51,9 +53,6 @@
 
 #include "utils/timer.hpp"
 
-#define TEST_FREEIMAGE 0
-
-#if !TEST_FREEIMAGE 
 
 int main()
 {
@@ -92,6 +91,15 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 		}
 	}
 
+	Group* g = new Group(math::mat4::translation(math::vec3(-15.8f, 7.0f, 0.0f)));
+	Label* fps = new Label("", 0.4f, 0.4f, math::vec4(1, 1, 1, 1));
+	g->add(new Sprite(0, 0, 5, 1.5f, math::vec4(0.3f, 0.3f, 0.3f, 0.9f)));
+	g->add(fps);
+
+	layer.add(g);
+
+	
+
 
 	GLint texIDs[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -116,6 +124,7 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 		if (time.elapsed() - timer > 1.0f)
 		{
 			timer += 1.0f;
+			fps->text = std::to_string(frames) + "fps";
 			printf("%d fps\n", frames);
 			frames = 0;
 		}
@@ -127,61 +136,3 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
 
 }
-#else
-
-
-int main()
-{
-	//PATH IS RELATIVE TO BUILD DESTINATION NOT SOURCE DESTINATION
-const char* filename = "test.png";
-FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
-FIBITMAP* dib(0);
-BYTE* bits(0);
-unsigned int width(0), height(0);
-GLuint gl_texID;
-
-// Check the file signature and deduce its format
-fif = FreeImage_GetFileType(filename, 0);
-
-// If still unknown, try to guess the file format from the file extension
-if (fif == FIF_UNKNOWN)
-    fif = FreeImage_GetFIFFromFilename(filename);
-
-// If still unknown, return failure
-if (fif == FIF_UNKNOWN)
-    return false;
-
-// Check that the plugin has reading capabilities and load the file
-if (FreeImage_FIFSupportsReading(fif))
-    dib = FreeImage_Load(fif, filename);
-
-// If the image failed to load, return failure
-if (!dib)
-    return false;
-
-// Retrieve the image data
-bits = FreeImage_GetBits(dib);
-// Get the image width and height
-width = FreeImage_GetWidth(dib);
-height = FreeImage_GetHeight(dib);
-
-// If any of the above failed (bits, width, height), return failure
-if ((bits == 0) || (width == 0) || (height == 0))
-    return false;
-
-// Output the image width and height
-std::cout << width << ", " << height << std::endl;
-
-
-	// int width, height, channels;
-	// unsigned char* imageData = stbi_load("test.png", &width, &height, &channels, STBI_rgb_alpha);
-	// if (imageData == nullptr) {
-	// 	std::cout << "Failed" << stbi_failure_reason() << std::endl;
-	// }
-	//
-	// std::cout << width << ", " << height << std::endl;
-	//
- //  return 0;
-}
-
-#endif
