@@ -128,5 +128,5 @@ if (fs_in.tid > 0.0) {
 
 
 
-	color = texColor * intensity;
+	color = texColor; //* intensity;
 }

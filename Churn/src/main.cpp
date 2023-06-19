@@ -62,7 +62,7 @@ int main()
 
 
 	Window window("churn", 960, 540);
-	// glClearColor(0.5f, 1.0f, 0.6f, 0.3f);
+	glClearColor(0.5f, 1.0f, 0.6f, 0.3f);
 
 
 mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);

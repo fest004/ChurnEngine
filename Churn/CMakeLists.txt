@@ -43,6 +43,7 @@ target_link_libraries(Churn PRIVATE
     freetype_gl_lib
     freetype
     freeimage
+    GLU
 )
 
 

@@ -6,6 +6,8 @@
 #include "../buffers/indexbuffer.hpp"
 
 #include "../../../libs/freetype-gl/freetype-gl.h"
+#include "../../../libs/glfreetype/include/glfreetype/TextRenderer.hpp"
+
 
 
 namespace churn {
@@ -45,6 +47,8 @@ private:
 
   ftgl::texture_atlas_t* m_FTTexAtlas;
   ftgl::texture_font_t* m_FTFont;
+
+  glfreetype::font_data m_Font;
 
   void init();
 };

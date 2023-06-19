@@ -34,10 +34,10 @@ Layer::Layer(Renderer2D* renderer, Shader* shader, math::mat4 projectionMatrix)
 		m_Shader->enable();
 		m_Renderer->begin();
 
-		for (const Renderable2D* renderable : m_Renderables)
-			renderable->submit(m_Renderer);
-
-		m_Renderer->drawString("", math::vec3(0, 0, 0), math::vec4(0, 0, 0, 0));
+		// for (const Renderable2D* renderable : m_Renderables)
+		// 	renderable->submit(m_Renderer);
+		//
+		m_Renderer->drawString("H", math::vec3(0, 0, 0), math::vec4(0, 0, 0, 0));
 
 
 		m_Renderer->end();
