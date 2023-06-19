@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmath.a CMakeFiles/math.dir/vec2.cpp.o CMakeFiles/math.dir/vec3.cpp.o CMakeFiles/math.dir/vec4.cpp.o CMakeFiles/math.dir/mat4.cpp.o
+/usr/bin/ranlib libmath.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libglfreetype_lib.a CMakeFiles/glfreetype_lib.dir/libs/glfreetype/src/TextRenderer.cpp.o
+/usr/bin/ranlib libglfreetype_lib.a
