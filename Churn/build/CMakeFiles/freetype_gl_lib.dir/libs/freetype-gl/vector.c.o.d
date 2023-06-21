@@ -51,6 +51,4 @@ CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vector.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/vector.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/ftgl-utils.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/freetype-gl-errdef.h
+ /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/vector.h

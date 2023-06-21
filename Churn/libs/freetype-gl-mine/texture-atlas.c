@@ -48,7 +48,7 @@ texture_atlas_new( const size_t width,
     // sampling texture
     ivec3 node = {{1,1,width-2}};
 
-    assert( (depth == 1) || (depth == 3) || (depth == 4) );
+    assert( (depth == 1) || (depth == 2) || (depth == 3) || (depth == 4) );
     if( self == NULL)
     {
         freetype_gl_error( Out_Of_Memory );
@@ -95,6 +95,7 @@ texture_atlas_delete( texture_atlas_t *self )
 
 
 // ----------------------------------------------- texture_atlas_set_region ---
+
 void
 texture_atlas_set_region( texture_atlas_t * self,
                           const size_t x,
@@ -104,9 +105,10 @@ texture_atlas_set_region( texture_atlas_t * self,
                           const unsigned char * data,
                           const size_t stride )
 {
-    size_t i;
+    size_t i, j;
     size_t depth;
     size_t charsize;
+	unsigned char *row, *src;
 
     assert( self );
     assert( x > 0);
@@ -115,20 +117,28 @@ texture_atlas_set_region( texture_atlas_t * self,
     assert( (x + width) <= (self->width-1));
     assert( y < (self->height-1));
     assert( (y + height) <= (self->height-1));
-        
-    // prevent copying data from undefined position
-    // and prevent memcpy's undefined behavior when count is zero
-    assert(height == 0 || (data != NULL && width > 0));
-
     depth = self->depth;
     charsize = sizeof(char);
     for( i=0; i<height; ++i )
     {
-        memcpy( self->data+((y+i)*self->width + x ) * charsize * depth,
-                data + (i*stride) * charsize, width * charsize * depth  );
+		if (depth == 2)
+		{
+			row = self->data + ((y + i) * self->width + x) * charsize * depth;
+			src = (unsigned char *)(data + (i * stride) * charsize);
+			for (j = 0; j < width; j++)
+			{
+				row[j * 2 + 0] = 0xff;
+				row[j * 2 + 1] = src[j];
+			}
+		}
+		else
+		{
+			memcpy(self->data + ((y + i)*self->width + x) * charsize * depth,
+				data + (i*stride) * charsize, width * charsize * depth);
+		}
     }
-    self->modified = 1;
 }
+
 
 
 // ------------------------------------------------------ texture_atlas_fit ---

@@ -112,7 +112,6 @@ Churn: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 Churn: /usr/lib/x86_64-linux-gnu/libGLX.so
 Churn: /usr/lib/x86_64-linux-gnu/libGLU.so
 Churn: /usr/local/lib/libglfw3.a
-Churn: libglfreetype_lib.a
 Churn: libfreetype_gl_lib.a
 Churn: /usr/lib/x86_64-linux-gnu/librt.a
 Churn: /usr/lib/x86_64-linux-gnu/libm.so

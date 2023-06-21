@@ -52,7 +52,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/glfreetype_lib.dir/DependInfo.cmake"
   "CMakeFiles/freetype_gl_lib.dir/DependInfo.cmake"
   "CMakeFiles/Churn.dir/DependInfo.cmake"
   )

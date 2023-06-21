@@ -209,21 +209,15 @@ CMakeFiles/Churn.dir/src/main.cpp.o: \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/Batch2DRenderer.cpp \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/Batch2DRenderer.hpp \
  /usr/include/c++/11/cstddef \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/renderable2D.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/renderer2D.hpp \
+ /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/renderable2D.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../sprites/texture.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../sprites/../../utils/imageload.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/freetype-gl.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/platform.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/opengl.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/config.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/vec234.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/vector.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/texture-atlas.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/texture-font.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/ftgl-utils.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/freetype-gl/freetype-gl-errdef.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/../../../libs/glfreetype/include/glfreetype/TextRenderer.hpp \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/simple2Drenderer.cpp \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/src/graphics/rendering/simple2Drenderer.hpp \
  /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \

@@ -1,13 +1,16 @@
 #pragma once
 
+
 #include "../buffers/buffer.hpp"
 #include "../buffers/indexbuffer.hpp"
 #include "../buffers/vertexarray.hpp"
 
-#include "../../math/math.hpp"
-#include "../../shaders/shader.h"
 #include "renderer2D.hpp"
 #include "../sprites/texture.h"
+
+#include "../../math/math.hpp"
+#include "../../shaders/shader.h"
+
 
 namespace churn {
 namespace graphics {
@@ -32,14 +35,14 @@ struct VertexData
 		std::vector<math::vec2> m_UV;
 		Texture* m_Texture;
 	protected:
-		Renderable2D() 
+		Renderable2D() : m_Texture(nullptr)
 		{ 
 			setUVDefaults();
 		}
 	public:
 		// Instantiate renderable and add data
 		Renderable2D(math::vec3 position, math::vec2 size, math::vec4 color)
-			: m_Position(position), m_Size(size), m_Color(color)
+			: m_Position(position), m_Size(size), m_Color(color), m_Texture(nullptr)
 		{ 
 			setUVDefaults();
 		}

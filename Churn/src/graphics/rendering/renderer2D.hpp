@@ -1,8 +1,6 @@
 #pragma once
 
-#include <glad/glad.h>
 #include <vector>
-
 #include "../../math/math.hpp"
 
 

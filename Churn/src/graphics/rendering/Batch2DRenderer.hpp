@@ -1,12 +1,18 @@
+#define GLFW_INCLUDE_NONE
 #pragma once
+#define GLAD_INCLUDE_NONE 
+
+
 
 #include <cstddef>
-#include "renderable2D.h"
 #include "renderer2D.hpp"
+#include "renderable2D.h"
 #include "../buffers/indexbuffer.hpp"
 
 #include "../../../libs/freetype-gl/freetype-gl.h"
-#include "../../../libs/glfreetype/include/glfreetype/TextRenderer.hpp"
+
+
+
 
 
 
@@ -45,10 +51,9 @@ private:
 
   std::vector<GLuint> m_TextureSlots;
 
-  ftgl::texture_atlas_t* m_FTTexAtlas;
+  ftgl::texture_atlas_t* m_FTAtlas;
   ftgl::texture_font_t* m_FTFont;
 
-  glfreetype::font_data m_Font;
 
   void init();
 };

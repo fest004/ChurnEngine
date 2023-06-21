@@ -321,21 +321,15 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
   ../src/graphics/rendering/Batch2DRenderer.cpp \
   ../src/graphics/rendering/Batch2DRenderer.hpp \
   /usr/include/c++/11/cstddef \
-  ../src/graphics/rendering/renderable2D.h \
   ../src/graphics/rendering/renderer2D.hpp \
+  ../src/graphics/rendering/renderable2D.h \
   ../src/graphics/sprites/texture.h \
   ../src/utils/imageload.h \
   ../libs/freetype-gl/freetype-gl.h \
-  ../libs/freetype-gl/platform.h \
-  ../libs/freetype-gl/opengl.h \
-  ../libs/freetype-gl/config.h \
   ../libs/freetype-gl/vec234.h \
   ../libs/freetype-gl/vector.h \
   ../libs/freetype-gl/texture-atlas.h \
   ../libs/freetype-gl/texture-font.h \
-  ../libs/freetype-gl/ftgl-utils.h \
-  ../libs/freetype-gl/freetype-gl-errdef.h \
-  ../libs/glfreetype/include/glfreetype/TextRenderer.hpp \
   ../src/graphics/rendering/simple2Drenderer.cpp \
   ../src/graphics/rendering/simple2Drenderer.hpp \
   /usr/include/c++/11/deque \
@@ -381,25 +375,17 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 
 ../src/graphics/rendering/simple2Drenderer.cpp:
 
-../libs/glfreetype/include/glfreetype/TextRenderer.hpp:
-
-../libs/freetype-gl/freetype-gl-errdef.h:
-
 ../libs/freetype-gl/texture-font.h:
 
 ../libs/freetype-gl/texture-atlas.h:
 
 ../libs/freetype-gl/vector.h:
 
-../libs/freetype-gl/opengl.h:
-
 ../libs/freetype-gl/freetype-gl.h:
 
 ../src/utils/imageload.h:
 
 ../src/graphics/sprites/texture.h:
-
-../src/graphics/rendering/renderer2D.hpp:
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
@@ -451,6 +437,14 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/c++/11/ext/type_traits.h:
 
+../src/graphics/layers/groups/group.hpp:
+
+../src/graphics/rendering/renderable2D.h:
+
+/usr/include/freetype/ftsystem.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
@@ -486,8 +480,6 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/include/dlfcn.h:
 
 /usr/include/c++/11/bits/exception_ptr.h:
-
-../libs/freetype-gl/ftgl-utils.h:
 
 /usr/include/c++/11/ext/string_conversions.h:
 
@@ -573,8 +565,6 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
-../libs/freetype-gl/platform.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
@@ -586,8 +576,6 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/c++/11/bits/functexcept.h:
-
-../libs/freetype-gl/config.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
@@ -621,14 +609,6 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
-../src/graphics/layers/groups/group.hpp:
-
-/usr/include/freetype/ftsystem.h:
-
-/usr/include/x86_64-linux-gnu/bits/local_lim.h:
-
-../src/graphics/rendering/renderable2D.h:
-
 /usr/include/c++/11/cstdlib:
 
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
@@ -658,6 +638,8 @@ CMakeFiles/Churn.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+../src/graphics/rendering/renderer2D.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 

@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named glfreetype_lib
-
-# Build rule for target.
-glfreetype_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glfreetype_lib
-.PHONY : glfreetype_lib
-
-# fast build rule for target.
-glfreetype_lib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glfreetype_lib.dir/build.make CMakeFiles/glfreetype_lib.dir/build
-.PHONY : glfreetype_lib/fast
-
-#=============================================================================
 # Target rules for targets named freetype_gl_lib
 
 # Build rule for target.
@@ -155,126 +142,6 @@ Churn/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Churn.dir/build.make CMakeFiles/Churn.dir/build
 .PHONY : Churn/fast
 
-libs/freetype-gl/distance-field.o: libs/freetype-gl/distance-field.c.o
-.PHONY : libs/freetype-gl/distance-field.o
-
-# target to build an object file
-libs/freetype-gl/distance-field.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/distance-field.c.o
-.PHONY : libs/freetype-gl/distance-field.c.o
-
-libs/freetype-gl/distance-field.i: libs/freetype-gl/distance-field.c.i
-.PHONY : libs/freetype-gl/distance-field.i
-
-# target to preprocess a source file
-libs/freetype-gl/distance-field.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/distance-field.c.i
-.PHONY : libs/freetype-gl/distance-field.c.i
-
-libs/freetype-gl/distance-field.s: libs/freetype-gl/distance-field.c.s
-.PHONY : libs/freetype-gl/distance-field.s
-
-# target to generate assembly for a file
-libs/freetype-gl/distance-field.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/distance-field.c.s
-.PHONY : libs/freetype-gl/distance-field.c.s
-
-libs/freetype-gl/edtaa3func.o: libs/freetype-gl/edtaa3func.c.o
-.PHONY : libs/freetype-gl/edtaa3func.o
-
-# target to build an object file
-libs/freetype-gl/edtaa3func.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/edtaa3func.c.o
-.PHONY : libs/freetype-gl/edtaa3func.c.o
-
-libs/freetype-gl/edtaa3func.i: libs/freetype-gl/edtaa3func.c.i
-.PHONY : libs/freetype-gl/edtaa3func.i
-
-# target to preprocess a source file
-libs/freetype-gl/edtaa3func.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/edtaa3func.c.i
-.PHONY : libs/freetype-gl/edtaa3func.c.i
-
-libs/freetype-gl/edtaa3func.s: libs/freetype-gl/edtaa3func.c.s
-.PHONY : libs/freetype-gl/edtaa3func.s
-
-# target to generate assembly for a file
-libs/freetype-gl/edtaa3func.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/edtaa3func.c.s
-.PHONY : libs/freetype-gl/edtaa3func.c.s
-
-libs/freetype-gl/font-manager.o: libs/freetype-gl/font-manager.c.o
-.PHONY : libs/freetype-gl/font-manager.o
-
-# target to build an object file
-libs/freetype-gl/font-manager.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/font-manager.c.o
-.PHONY : libs/freetype-gl/font-manager.c.o
-
-libs/freetype-gl/font-manager.i: libs/freetype-gl/font-manager.c.i
-.PHONY : libs/freetype-gl/font-manager.i
-
-# target to preprocess a source file
-libs/freetype-gl/font-manager.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/font-manager.c.i
-.PHONY : libs/freetype-gl/font-manager.c.i
-
-libs/freetype-gl/font-manager.s: libs/freetype-gl/font-manager.c.s
-.PHONY : libs/freetype-gl/font-manager.s
-
-# target to generate assembly for a file
-libs/freetype-gl/font-manager.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/font-manager.c.s
-.PHONY : libs/freetype-gl/font-manager.c.s
-
-libs/freetype-gl/ftgl-utils.o: libs/freetype-gl/ftgl-utils.c.o
-.PHONY : libs/freetype-gl/ftgl-utils.o
-
-# target to build an object file
-libs/freetype-gl/ftgl-utils.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/ftgl-utils.c.o
-.PHONY : libs/freetype-gl/ftgl-utils.c.o
-
-libs/freetype-gl/ftgl-utils.i: libs/freetype-gl/ftgl-utils.c.i
-.PHONY : libs/freetype-gl/ftgl-utils.i
-
-# target to preprocess a source file
-libs/freetype-gl/ftgl-utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/ftgl-utils.c.i
-.PHONY : libs/freetype-gl/ftgl-utils.c.i
-
-libs/freetype-gl/ftgl-utils.s: libs/freetype-gl/ftgl-utils.c.s
-.PHONY : libs/freetype-gl/ftgl-utils.s
-
-# target to generate assembly for a file
-libs/freetype-gl/ftgl-utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/ftgl-utils.c.s
-.PHONY : libs/freetype-gl/ftgl-utils.c.s
-
-libs/freetype-gl/makefont.o: libs/freetype-gl/makefont.c.o
-.PHONY : libs/freetype-gl/makefont.o
-
-# target to build an object file
-libs/freetype-gl/makefont.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/makefont.c.o
-.PHONY : libs/freetype-gl/makefont.c.o
-
-libs/freetype-gl/makefont.i: libs/freetype-gl/makefont.c.i
-.PHONY : libs/freetype-gl/makefont.i
-
-# target to preprocess a source file
-libs/freetype-gl/makefont.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/makefont.c.i
-.PHONY : libs/freetype-gl/makefont.c.i
-
-libs/freetype-gl/makefont.s: libs/freetype-gl/makefont.c.s
-.PHONY : libs/freetype-gl/makefont.s
-
-# target to generate assembly for a file
-libs/freetype-gl/makefont.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/makefont.c.s
-.PHONY : libs/freetype-gl/makefont.c.s
-
 libs/freetype-gl/platform.o: libs/freetype-gl/platform.c.o
 .PHONY : libs/freetype-gl/platform.o
 
@@ -298,30 +165,6 @@ libs/freetype-gl/platform.s: libs/freetype-gl/platform.c.s
 libs/freetype-gl/platform.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/platform.c.s
 .PHONY : libs/freetype-gl/platform.c.s
-
-libs/freetype-gl/text-buffer.o: libs/freetype-gl/text-buffer.c.o
-.PHONY : libs/freetype-gl/text-buffer.o
-
-# target to build an object file
-libs/freetype-gl/text-buffer.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/text-buffer.c.o
-.PHONY : libs/freetype-gl/text-buffer.c.o
-
-libs/freetype-gl/text-buffer.i: libs/freetype-gl/text-buffer.c.i
-.PHONY : libs/freetype-gl/text-buffer.i
-
-# target to preprocess a source file
-libs/freetype-gl/text-buffer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/text-buffer.c.i
-.PHONY : libs/freetype-gl/text-buffer.c.i
-
-libs/freetype-gl/text-buffer.s: libs/freetype-gl/text-buffer.c.s
-.PHONY : libs/freetype-gl/text-buffer.s
-
-# target to generate assembly for a file
-libs/freetype-gl/text-buffer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/text-buffer.c.s
-.PHONY : libs/freetype-gl/text-buffer.c.s
 
 libs/freetype-gl/texture-atlas.o: libs/freetype-gl/texture-atlas.c.o
 .PHONY : libs/freetype-gl/texture-atlas.o
@@ -371,30 +214,6 @@ libs/freetype-gl/texture-font.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/texture-font.c.s
 .PHONY : libs/freetype-gl/texture-font.c.s
 
-libs/freetype-gl/utf8-utils.o: libs/freetype-gl/utf8-utils.c.o
-.PHONY : libs/freetype-gl/utf8-utils.o
-
-# target to build an object file
-libs/freetype-gl/utf8-utils.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/utf8-utils.c.o
-.PHONY : libs/freetype-gl/utf8-utils.c.o
-
-libs/freetype-gl/utf8-utils.i: libs/freetype-gl/utf8-utils.c.i
-.PHONY : libs/freetype-gl/utf8-utils.i
-
-# target to preprocess a source file
-libs/freetype-gl/utf8-utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/utf8-utils.c.i
-.PHONY : libs/freetype-gl/utf8-utils.c.i
-
-libs/freetype-gl/utf8-utils.s: libs/freetype-gl/utf8-utils.c.s
-.PHONY : libs/freetype-gl/utf8-utils.s
-
-# target to generate assembly for a file
-libs/freetype-gl/utf8-utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/utf8-utils.c.s
-.PHONY : libs/freetype-gl/utf8-utils.c.s
-
 libs/freetype-gl/vector.o: libs/freetype-gl/vector.c.o
 .PHONY : libs/freetype-gl/vector.o
 
@@ -419,54 +238,6 @@ libs/freetype-gl/vector.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vector.c.s
 .PHONY : libs/freetype-gl/vector.c.s
 
-libs/freetype-gl/vertex-attribute.o: libs/freetype-gl/vertex-attribute.c.o
-.PHONY : libs/freetype-gl/vertex-attribute.o
-
-# target to build an object file
-libs/freetype-gl/vertex-attribute.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vertex-attribute.c.o
-.PHONY : libs/freetype-gl/vertex-attribute.c.o
-
-libs/freetype-gl/vertex-attribute.i: libs/freetype-gl/vertex-attribute.c.i
-.PHONY : libs/freetype-gl/vertex-attribute.i
-
-# target to preprocess a source file
-libs/freetype-gl/vertex-attribute.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vertex-attribute.c.i
-.PHONY : libs/freetype-gl/vertex-attribute.c.i
-
-libs/freetype-gl/vertex-attribute.s: libs/freetype-gl/vertex-attribute.c.s
-.PHONY : libs/freetype-gl/vertex-attribute.s
-
-# target to generate assembly for a file
-libs/freetype-gl/vertex-attribute.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vertex-attribute.c.s
-.PHONY : libs/freetype-gl/vertex-attribute.c.s
-
-libs/freetype-gl/vertex-buffer.o: libs/freetype-gl/vertex-buffer.c.o
-.PHONY : libs/freetype-gl/vertex-buffer.o
-
-# target to build an object file
-libs/freetype-gl/vertex-buffer.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vertex-buffer.c.o
-.PHONY : libs/freetype-gl/vertex-buffer.c.o
-
-libs/freetype-gl/vertex-buffer.i: libs/freetype-gl/vertex-buffer.c.i
-.PHONY : libs/freetype-gl/vertex-buffer.i
-
-# target to preprocess a source file
-libs/freetype-gl/vertex-buffer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vertex-buffer.c.i
-.PHONY : libs/freetype-gl/vertex-buffer.c.i
-
-libs/freetype-gl/vertex-buffer.s: libs/freetype-gl/vertex-buffer.c.s
-.PHONY : libs/freetype-gl/vertex-buffer.s
-
-# target to generate assembly for a file
-libs/freetype-gl/vertex-buffer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/freetype_gl_lib.dir/build.make CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/vertex-buffer.c.s
-.PHONY : libs/freetype-gl/vertex-buffer.c.s
-
 libs/glad/glad.o: libs/glad/glad.c.o
 .PHONY : libs/glad/glad.o
 
@@ -490,30 +261,6 @@ libs/glad/glad.s: libs/glad/glad.c.s
 libs/glad/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Churn.dir/build.make CMakeFiles/Churn.dir/libs/glad/glad.c.s
 .PHONY : libs/glad/glad.c.s
-
-libs/glfreetype/src/TextRenderer.o: libs/glfreetype/src/TextRenderer.cpp.o
-.PHONY : libs/glfreetype/src/TextRenderer.o
-
-# target to build an object file
-libs/glfreetype/src/TextRenderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glfreetype_lib.dir/build.make CMakeFiles/glfreetype_lib.dir/libs/glfreetype/src/TextRenderer.cpp.o
-.PHONY : libs/glfreetype/src/TextRenderer.cpp.o
-
-libs/glfreetype/src/TextRenderer.i: libs/glfreetype/src/TextRenderer.cpp.i
-.PHONY : libs/glfreetype/src/TextRenderer.i
-
-# target to preprocess a source file
-libs/glfreetype/src/TextRenderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glfreetype_lib.dir/build.make CMakeFiles/glfreetype_lib.dir/libs/glfreetype/src/TextRenderer.cpp.i
-.PHONY : libs/glfreetype/src/TextRenderer.cpp.i
-
-libs/glfreetype/src/TextRenderer.s: libs/glfreetype/src/TextRenderer.cpp.s
-.PHONY : libs/glfreetype/src/TextRenderer.s
-
-# target to generate assembly for a file
-libs/glfreetype/src/TextRenderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/glfreetype_lib.dir/build.make CMakeFiles/glfreetype_lib.dir/libs/glfreetype/src/TextRenderer.cpp.s
-.PHONY : libs/glfreetype/src/TextRenderer.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -549,52 +296,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Churn"
 	@echo "... freetype_gl_lib"
-	@echo "... glfreetype_lib"
-	@echo "... libs/freetype-gl/distance-field.o"
-	@echo "... libs/freetype-gl/distance-field.i"
-	@echo "... libs/freetype-gl/distance-field.s"
-	@echo "... libs/freetype-gl/edtaa3func.o"
-	@echo "... libs/freetype-gl/edtaa3func.i"
-	@echo "... libs/freetype-gl/edtaa3func.s"
-	@echo "... libs/freetype-gl/font-manager.o"
-	@echo "... libs/freetype-gl/font-manager.i"
-	@echo "... libs/freetype-gl/font-manager.s"
-	@echo "... libs/freetype-gl/ftgl-utils.o"
-	@echo "... libs/freetype-gl/ftgl-utils.i"
-	@echo "... libs/freetype-gl/ftgl-utils.s"
-	@echo "... libs/freetype-gl/makefont.o"
-	@echo "... libs/freetype-gl/makefont.i"
-	@echo "... libs/freetype-gl/makefont.s"
 	@echo "... libs/freetype-gl/platform.o"
 	@echo "... libs/freetype-gl/platform.i"
 	@echo "... libs/freetype-gl/platform.s"
-	@echo "... libs/freetype-gl/text-buffer.o"
-	@echo "... libs/freetype-gl/text-buffer.i"
-	@echo "... libs/freetype-gl/text-buffer.s"
 	@echo "... libs/freetype-gl/texture-atlas.o"
 	@echo "... libs/freetype-gl/texture-atlas.i"
 	@echo "... libs/freetype-gl/texture-atlas.s"
 	@echo "... libs/freetype-gl/texture-font.o"
 	@echo "... libs/freetype-gl/texture-font.i"
 	@echo "... libs/freetype-gl/texture-font.s"
-	@echo "... libs/freetype-gl/utf8-utils.o"
-	@echo "... libs/freetype-gl/utf8-utils.i"
-	@echo "... libs/freetype-gl/utf8-utils.s"
 	@echo "... libs/freetype-gl/vector.o"
 	@echo "... libs/freetype-gl/vector.i"
 	@echo "... libs/freetype-gl/vector.s"
-	@echo "... libs/freetype-gl/vertex-attribute.o"
-	@echo "... libs/freetype-gl/vertex-attribute.i"
-	@echo "... libs/freetype-gl/vertex-attribute.s"
-	@echo "... libs/freetype-gl/vertex-buffer.o"
-	@echo "... libs/freetype-gl/vertex-buffer.i"
-	@echo "... libs/freetype-gl/vertex-buffer.s"
 	@echo "... libs/glad/glad.o"
 	@echo "... libs/glad/glad.i"
 	@echo "... libs/glad/glad.s"
-	@echo "... libs/glfreetype/src/TextRenderer.o"
-	@echo "... libs/glfreetype/src/TextRenderer.i"
-	@echo "... libs/glfreetype/src/TextRenderer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,11 +1,11 @@
 #include "Batch2DRenderer.hpp"
+#include <freetype/freetype.h>
 
 namespace churn {
 namespace graphics {
-using ftgl::texture_font_get_glyph;
-using ftgl::texture_font_load_glyphs;
 
-BatchRenderer2D::BatchRenderer2D()
+
+	BatchRenderer2D::BatchRenderer2D()
 	{
 		init();
 	}
@@ -57,9 +57,25 @@ BatchRenderer2D::BatchRenderer2D()
 
 		glBindVertexArray(0);
 
+		m_FTAtlas = ftgl::texture_atlas_new(512, 512, 2);
+		m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
 
+// const wchar_t character = L'A';
+// ftgl::texture_font_load_glyphs(m_FTFont, &character);
+//
+// glGenTextures(1, &m_FTAtlas->id);
+// glBindTexture(GL_TEXTURE_2D, m_FTAtlas->id);
+// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+// glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_FTAtlas->width, m_FTAtlas->height, 0, GL_RED, GL_UNSIGNED_BYTE, m_FTAtlas->data);
+//
+//
+// const wchar_t character2 = L'A';
+// ftgl::texture_font_get_glyph(m_FTFont, character2);
 
-  }
+	}
 
 	void BatchRenderer2D::begin()
 	{
@@ -140,102 +156,97 @@ BatchRenderer2D::BatchRenderer2D()
 
 	void BatchRenderer2D::drawString(const std::string& text, const math::vec3& position, const math::vec4& color)
 	{
-		m_Font.init("arial.ttf", 0);
-		glfreetype::print(m_Font, position.x, position.y, "Hey");
+		using namespace ftgl;
 
+		int r = color.x * 255.0f;
+		int g = color.y * 255.0f;
+		int b = color.z * 255.0f;
+		int a = color.w * 255.0f;
 
+		unsigned int col = a << 24 | b << 16 | g << 8 | r;
 
-		// using namespace ftgl;
-		//
-		// int r = color.x * 255.0f;
-		// int g = color.y * 255.0f;
-		// int b = color.z * 255.0f;
-		// int a = color.w * 255.0f;
-		//
-		// unsigned int col = a << 24 | b << 16 | g << 8 | r;
-		//
-		// float ts = 0.0f;
-		// bool found = false;
-		// for (int i = 0; i < m_TextureSlots.size(); i++)
-		// {
-		// 	if (m_TextureSlots[i] == m_FTTexAtlas->id)
-		// 	{
-		// 		ts = (float)(i + 1);
-		// 		found = true;
-		// 		break;
-		// 	}
-		// }
-		//
-		// if (!found)
-		// {
-		// 	if (m_TextureSlots.size() >= 32)
-		// 	{
-		// 		end();
-		// 		flush();
-		// 		begin();
-		// 	}
-		// 	m_TextureSlots.push_back(m_FTTexAtlas->id);
-		// 	ts = (float)(m_TextureSlots.size());
-		// }
-		//
-		// float scaleX = 960.0f / 32.0f;
-		// float scaleY = 540.0f / 18.0f;
-		//
-		// float x = position.x;
-		//
-		// for (int i = 0; i < text.length(); i++)
-		// {
-		// 	char c = text[i];
-		// 	texture_glyph_t* glyph = texture_font_get_glyph(m_FTFont, &c);
-		// 	if (glyph != NULL)
-		// 	{
-		//
-		// 		if (i > 0)
-		// 		{
-		// 			float kerning = texture_glyph_get_kerning(glyph, &text[i - 1]);
-		// 			x += kerning / scaleX;
-		// 		}
-		//
-		// 		float x0 = x + glyph->offset_x / scaleX;
-		// 		float y0 = position.y + glyph->offset_y / scaleY;
-		// 		float x1 = x0 + glyph->width / scaleX;
-		// 		float y1 = y0 - glyph->height / scaleY;
-		//
-		// 		float u0 = glyph->s0;
-		// 		float v0 = glyph->t0;
-		// 		float u1 = glyph->s1;
-		// 		float v1 = glyph->t1;
-		//
-		// 		m_Buffer->vertex = *m_TransformationBack * math::vec3(x0, y0, 0);
-		// 		m_Buffer->uv = math::vec2(u0, v0);
-		// 		m_Buffer->textureID= ts;
-		// 		m_Buffer->color = col;
-		// 		m_Buffer++;
-		//
-		// 		m_Buffer->vertex = *m_TransformationBack * math::vec3(x0, y1, 0);
-		// 		m_Buffer->uv = math::vec2(u0, v1);
-		// 		m_Buffer->textureID= ts;
-		// 		m_Buffer->color = col;
-		// 		m_Buffer++;
-		//
-		// 		m_Buffer->vertex = *m_TransformationBack * math::vec3(x1, y1, 0);
-		// 		m_Buffer->uv = math::vec2(u1, v1);
-		// 		m_Buffer->textureID = ts;
-		// 		m_Buffer->color = col;
-		// 		m_Buffer++;
-		//
-		// 		m_Buffer->vertex = *m_TransformationBack * math::vec3(x1, y0, 0);
-		// 		m_Buffer->uv = math::vec2(u1, v0);
-		// 		m_Buffer->textureID= ts;
-		// 		m_Buffer->color = col;
-		// 		m_Buffer++;
-		//
-		// 		m_IndexCount += 6;
-		//
-		// 		x += glyph->advance_x / scaleX;
-		// 	}
-		//
-		// }
+		float ts = 0.0f;
+		bool found = false;
+		for (int i = 0; i < m_TextureSlots.size(); i++)
+		{
+			if (m_TextureSlots[i] == m_FTAtlas->id)
+			{
+				ts = (float)(i + 1);
+				found = true;
+				break;
+			}
+		}
+
+		if (!found)
+		{
+			if (m_TextureSlots.size() >= 32)
+			{
+				end();
+				flush();
+				begin();
+			}
+			m_TextureSlots.push_back(m_FTAtlas->id);
+			ts = (float)(m_TextureSlots.size());
+		}
+
+		float scaleX = 960.0f / 32.0f;
+		float scaleY = 540.0f / 18.0f;
+
+		float x = position.x;
+
+		for (int i = 0; i < text.length(); i++)
+		{
+			char c = text[i];
+			texture_glyph_t* glyph = texture_font_get_glyph(m_FTFont, c);
+			if (glyph != NULL)
+			{
+
+				if (i > 0)
+				{
+					float kerning = texture_glyph_get_kerning(glyph, text[i - 1]);
+					x += kerning / scaleX;
+				}
+
+				float x0 = x + glyph->offset_x / scaleX;
+				float y0 = position.y + glyph->offset_y / scaleY;
+				float x1 = x0 + glyph->width / scaleX;
+				float y1 = y0 - glyph->height / scaleY;
+
+				float u0 = glyph->s0;
+				float v0 = glyph->t0;
+				float u1 = glyph->s1;
+				float v1 = glyph->t1;
+
+				m_Buffer->vertex = *m_TransformationBack * math::vec3(x0, y0, 0);
+				m_Buffer->uv = math::vec2(u0, v0);
+				m_Buffer->textureID = ts;
+				m_Buffer->color = col;
+				m_Buffer++;
+
+				m_Buffer->vertex = *m_TransformationBack * math::vec3(x0, y1, 0);
+				m_Buffer->uv = math::vec2(u0, v1);
+				m_Buffer->textureID = ts;
+				m_Buffer->color = col;
+				m_Buffer++;
+
+				m_Buffer->vertex = *m_TransformationBack * math::vec3(x1, y1, 0);
+				m_Buffer->uv = math::vec2(u1, v1);
+				m_Buffer->textureID = ts;
+				m_Buffer->color = col;
+				m_Buffer++;
+
+				m_Buffer->vertex = *m_TransformationBack * math::vec3(x1, y0, 0);
+				m_Buffer->uv = math::vec2(u1, v0);
+				m_Buffer->textureID = ts;
+				m_Buffer->color = col;
+				m_Buffer++;
+
+				m_IndexCount += 6;
+
+				x += glyph->advance_x / scaleX;
+			}
+
+		}
 	}
 
 	void BatchRenderer2D::end()
@@ -263,5 +274,5 @@ BatchRenderer2D::BatchRenderer2D()
 		m_IndexCount = 0;
 	}
 
-        } // namespace graphics
+} // namespace graphics
 } // namespace churn

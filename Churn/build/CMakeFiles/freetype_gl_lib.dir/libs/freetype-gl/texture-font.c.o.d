@@ -72,10 +72,9 @@ CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/texture-font.c.o: \
  /usr/include/freetype/fttypes.h /usr/include/freetype/ftsystem.h \
  /usr/include/freetype/ftimage.h /usr/include/freetype/fterrors.h \
  /usr/include/freetype/ftmoderr.h /usr/include/freetype/fterrdef.h \
- /usr/include/freetype/ftsizes.h /usr/include/freetype/ftstroke.h \
- /usr/include/freetype/ftoutln.h /usr/include/freetype/ftglyph.h \
- /usr/include/freetype/ftlcdfil.h /usr/include/freetype/ftparams.h \
- /usr/include/freetype/tttables.h \
+ /usr/include/freetype/ftstroke.h /usr/include/freetype/ftoutln.h \
+ /usr/include/freetype/ftglyph.h /usr/include/freetype/ftlcdfil.h \
+ /usr/include/freetype/ftparams.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/assert.h \
@@ -85,13 +84,11 @@ CMakeFiles/freetype_gl_lib.dir/libs/freetype-gl/texture-font.c.o: \
  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/distance-field.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h /usr/include/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/texture-font.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/vector.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/texture-atlas.h \
  /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/vec234.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/platform.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/utf8-utils.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/ftgl-utils.h \
- /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/freetype-gl-errdef.h
+ /home/ubuntu/dev/cpp/ChurnEngine/ChurnEngine/Churn/libs/freetype-gl/platform.h
