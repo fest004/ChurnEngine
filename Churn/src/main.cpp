@@ -9,6 +9,11 @@
 
 #include <GLFW/glfw3.h>
 
+#include "utils/textload.cpp"
+#include "utils/textload.h"
+
+
+
 #include "shaders/shader.cpp"
 #include "shaders/shader.h"
 #include "graphics/window.cpp"
@@ -78,6 +83,10 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
 	TileLayer layer(&shader);
 
+	utils::TextLoader tx;
+
+	tx.RenderText(*s, "Test", 20, 20, 1, math::vec3(1, 1, 1));
+
 
 	Texture* textures[]  = 
 	{
@@ -128,7 +137,7 @@ mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 		if (time.elapsed() - timer > 1.0f)
 		{
 			timer += 1.0f;
-			fps->text = std::to_string(frames) + "fps";
+			fps->m_Text = std::to_string(frames) + "fps";
 			printf("%d fps\n", frames);
 			frames = 0;
 		}

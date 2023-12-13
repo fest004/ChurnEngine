@@ -1,6 +1,10 @@
+#pragma once
+
 #include <cstring>
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 namespace churn {
 
@@ -14,7 +18,7 @@ public:
     // C way of reading files for speed;
     // String args are r = read t = txt over fexample binary file
     // Basically read only this txt file
-    FILE *file = fopen(filepath, "rt");
+    FILE *file = fopen(filepath, "rb");
     if (file == nullptr) {
       std::cout << "File not found" << std::endl;
     }
@@ -29,6 +33,18 @@ public:
     std::string result(data);
     delete[] data;
     return result;
+  }
+
+   static std::string read_binary(const char* filepath) {
+    std::ifstream file(filepath, std::ios::binary);
+    if (!file) {
+      std::cout << "File not found" << std::endl;
+      return "";
+    }
+
+    std::ostringstream buffer;
+    buffer << file.rdbuf();
+    return buffer.str();
   }
 };
 

@@ -14,9 +14,9 @@ public:
 
 public:
   //Variables
-	std::string text;
-	math::vec3& position;
-	float x, y;
+	std::string m_Text;
+	math::vec3& m_LabelPosition;
+	float m_X, m_Y;
 
 };
 

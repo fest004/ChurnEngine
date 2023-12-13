@@ -5,7 +5,7 @@ namespace churn {
 namespace graphics {
 
 Label::Label(std::string text, float x, float y, math::vec4 color)
-		: Renderable2D(), text(text), position(m_Position)
+		: Renderable2D(), m_Text(text), m_LabelPosition(m_Position)
 	{
 		m_Position = math::vec3(x, y, 0.0f);
 		m_Color = color;
@@ -13,7 +13,7 @@ Label::Label(std::string text, float x, float y, math::vec4 color)
 
 	void Label::submit(Renderer2D* renderer) const
 	{
-		renderer->drawString(text, position, m_Color);
+		renderer->drawString(m_Text, m_LabelPosition, m_Color);
 	}
 
 
